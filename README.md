@@ -63,6 +63,7 @@ make
 This produces `main.pdf` in the `aion-holography/` directory.
 
 To clean build artifacts:
+
 ```bash
 make clean
 ```
