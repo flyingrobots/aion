@@ -6,7 +6,7 @@ We sketch the concurrency discipline, define independence, and state the
 main confluence theorems for tick-level execution, working with RMG
 states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
 
-\subsection{Footprints, independence, and scheduler--admissible batches}
+\subsection{Footprints and Independence on the Skeleton Plane}
 
 We work at the level of the skeleton plane.  Let
 $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
@@ -44,6 +44,8 @@ $\OGraph_T$ satisfying the usual gluing conditions.
   written by the other.
 \end{definition}
 
+\subsubsection{Scheduler--admissible batches}
+
 \begin{definition}[Scheduler--admissible batch]\label{def:batch}
   Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state.  A finite
   family of skeleton matches
@@ -68,7 +70,10 @@ given by the standard double square (pushout complement + pushout).
 We work with RMG states and tick semantics as defined in
 \cref{def:rmg-state,def:rmg-tick}.  In this section we analyse when
 batches of matches can be scheduled concurrently without affecting the
-resulting state.
+resulting state.  The deterministic properties proved here apply
+uniformly to all derivations; applying them to cognitive systems
+introduces additional ethical structure developed in
+\cref{sec:ethics}.
 
 The scheduler computes a maximal independent set of matches in the
 sense of \cref{def:batch}, using a safe over-approximation of

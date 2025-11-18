@@ -2,8 +2,8 @@
 \section{DPO Rewriting on Recursive Metagraphs}
 \label{sec:dpo-rmg}
 
-We recall double--pushout with interfaces (DPOI) rewriting on typed open
-graphs and lift it to RMG states.
+We briefly review double--pushout with interfaces (DPOI) rewriting on
+typed open graphs and lift it to RMG states.
 
 \subsection{Typed open graphs and DPOI rules}
 
@@ -11,8 +11,8 @@ Let $T$ be a finite set of types.
 Let $\OGraph_T$ be the category of $T$-typed open graphs, whose objects
 are cospans of monomorphisms $I \hookrightarrow G \hookleftarrow O$ and
 whose morphisms are commuting maps of cospans.  This category is
-adhesive; in particular,
-pushouts along monos exist and form Van Kampen squares.
+adhesive (see~\cite{LS06}); in particular, pushouts along monos exist
+and form Van Kampen squares.
 
 \begin{definition}[DPOI rule]
 A \emph{DPOI rule} is a span of monos in $\OGraph_T$
@@ -54,6 +54,9 @@ An RMG \emph{state} is a triple
 where $G \in \OGraph_T$ is the skeleton and $\alpha,\beta$ assign
 attachment objects in the appropriate fibres to nodes and edges of $G$.
 \end{definition}
+
+This separates the global state into a base skeleton and recursively
+attached subgraphs.
 
 Rewriting operates in two ``planes'':
 

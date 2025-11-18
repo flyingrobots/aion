@@ -55,7 +55,7 @@ $\sigma$ is an integrity/authentication tag, and $P$ is a
 with abstract microsteps and payloads; the ASP is one concrete
 instantiation of this pattern.
 
-\paragraph{Example (Toy AION state packet).}
+\paragraph{Example (Toy \AION{} state packet).}
 As a toy example, consider a computation that increments an integer.
 The input state $S_{\mathrm{in}}$ contains a literal $x=5$, the output
 state $S_{\mathrm{out}}$ contains both $x=5$ and a result $y=6$, the
@@ -80,9 +80,10 @@ there exists a unique (up to isomorphism) sequence of states
        \Rewrite^{\mu_{n-1}} S_n
 \]
 obtained by applying the corresponding ticks under the scheduler.
-The pair $(S_0,P)$ is a \emph{wormhole}.  Its \emph{volume} is the
-derivation path $S_0 \Rewrite^\ast S_n$, and its \emph{boundary} is
-the pair $(S_0,P)$.
+We call the pair $(S_0,P)$ a \emph{wormhole}, reflecting that it
+collapses an entire derivation into a single boundary edge.  Its
+\emph{volume} is the derivation path $S_0 \Rewrite^\ast S_n$, and its
+\emph{boundary} is the pair $(S_0,P)$.
 \end{definition}
 
 By tick-level confluence
@@ -155,6 +156,8 @@ unique up to isomorphism.
 
 \subsection{Computational holography}
 
+The key insight is that the payload $P$ carries precisely the
+information required to reconstruct the entire interior evolution.
 We now formalise the ``boundary encodes volume'' slogan.
 
 \begin{definition}[Reconstruction procedure]
@@ -244,9 +247,9 @@ with isomorphism classes of finite derivation volumes.
 
   \end{tikzpicture}
   \caption{Computational holography: the full interior evolution
-  $S_0 \Rewrite \dots \Rewrite S_n$ (volume) is uniquely reconstructible
-  from the boundary data $(S_0,P)$, where $P$ is the provenance payload
-  attached to a single RMG edge.}
+  $S_0 \Rewrite S_1 \Rewrite \cdots \Rewrite S_n$ (volume) is uniquely
+  reconstructible from the boundary data $(S_0,P)$, where $P$ is the
+  provenance payload attached to a \textbf{single RMG edge}.}
   \label{fig:holography-volume-boundary}
 \end{figure}
 
@@ -279,12 +282,13 @@ content of a bulk spacetime region can be encoded on a lower-dimensional
 boundary.  Our use of ``computational holography'' is a precise,
 information-theoretic analogue in a discrete, deterministic setting:
 the ``volume'' is the interior derivation sequence
-$S_0 \Rewrite \dots \Rewrite S_n$, and the ``boundary'' is the pair
-$(S_0,P)$, where $P$ is a provenance payload.  Theorem~\ref{thm:holography}
-establishes that this boundary is information-complete with respect to
-the volume in the sense of algorithmic reconstruction.  We do not assume
-any geometric or quantum-mechanical structure, though it is tempting to
-speculate about future connections.
+$S_0 \Rewrite S_1 \Rewrite \cdots \Rewrite S_n$, and the ``boundary''
+is the pair $(S_0,P)$, where $P$ is a provenance payload.
+Theorem~\ref{thm:holography} establishes that this boundary is
+information-complete with respect to the volume in the sense of
+algorithmic reconstruction.  We do not assume any geometric or
+quantum-mechanical structure, though it is tempting to speculate about
+future connections.
 \end{remark}
 
 Thus the entire ``volume'' of the computation is encoded on the

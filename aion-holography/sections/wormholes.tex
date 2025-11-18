@@ -10,6 +10,8 @@ We refer to such a provenance-labelled edge as an \emph{RMG wormhole}.
 
 \subsection{Edge-level compression}
 
+This encapsulation step is central to \AION{}'s compression semantics.
+
 Given a derivation
 \[
   S_0 \Rewrite^{\mu_0} S_1 \Rewrite^{\mu_1} \dots \Rewrite^{\mu_{n-1}} S_n,
@@ -68,6 +70,8 @@ $0 \le k < n$ and then takes an alternative sequence of microsteps
 that still forms a valid RMG derivation from the intermediate state
 $S_k$.  Under the same hypotheses as in \cref{thm:holography},
 $\Recon(S_0,P')$ is therefore well-defined and yields a distinct, but
-compatible, volume.  This underlies the multiverse execution model used
-in the \AION{} \COMPUTER{}, where adversarial, optimized, and safety
-universes are spawned by varying payloads while sharing prefixes.
+compatible, volume.  Because reconstruction is guaranteed by the same
+determinism discipline, forking preserves semantic soundness.  This
+underlies the multiverse execution model used in the \AION{}
+\COMPUTER{}, where adversarial, optimized, and safety universes are
+spawned by varying payloads while sharing prefixes.
