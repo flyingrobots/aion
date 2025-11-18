@@ -49,10 +49,12 @@ git push origin v1.0
 ### Local Build
 
 #### Prerequisites
+
 - A working LaTeX installation (TeX Live 2023+ recommended)
 - Standard packages: `amsmath`, `tikz`, `amsthm`, `enumitem`, `cleveref`
 
 #### Compile
+
 ```bash
 cd aion-holography
 make
