@@ -39,6 +39,7 @@ Every push to `main` automatically builds all papers via GitHub Actions. The com
 - **Release assets** when you create a tagged release
 
 To create a release with PDF:
+
 ```bash
 git tag -a v1.0 -m "Release v1.0"
 git push origin v1.0
