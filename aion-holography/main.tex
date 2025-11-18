@@ -2,7 +2,10 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\fi
 \usepackage{lmodern}
 \usepackage{microtype}
 
@@ -29,7 +32,7 @@
   \small Independent Researcher\\
   \small \texttt{james@flyingrobots.dev}}
 
-\date{\today}
+\date{November 2025}
 
 \begin{document}
 
