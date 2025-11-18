@@ -1,0 +1,194 @@
+\sectionbreak
+\section{Rulial Distance: A Computable Metric on Observer Space}
+\label{sec:rulial}
+
+We next formalize observers and an MDL-based distance between them, the
+\emph{rulial distance}.  This provides a geometry on different
+descriptions of the same underlying RMG universe.
+
+\subsection{Observers as functors}
+
+Fix an RMG universe $(U,R)$ and its history category
+$\Hist(U,R)$ whose objects are states and whose morphisms are derivation
+paths between them.  An \emph{observer} is a functor
+\[
+  O : \Hist(U,R) \To \mathcal{Y},
+\]
+where $\mathcal{Y}$ is a suitable category of observations (symbol
+streams, trace graphs, etc.), subject to resource budgets on time and
+memory.
+
+Different observers may:
+
+\begin{itemize}[leftmargin=*]
+  \item choose different projections of the same wormhole payloads;
+  \item aggregate or forget structure;
+  \item expose different notions of causality.
+\end{itemize}
+
+\subsection{Translators and MDL cost}
+
+A \emph{translator} between observers $O_1$ and $O_2$ is a functorial
+construction $T : O_1 \Rewrite O_2$ realized as a small DPOI
+transducer, together with a distortion metric on outputs.
+
+\paragraph{Example (SQL$\leftrightarrow$AST translator).}
+Consider two observers of an RMG universe modeling a database
+query planner.  Observer $O_1$ sees the wormhole payload $P$ as
+a sequence of AST transformations (parse tree $\to$ optimized AST
+$\to$ query plan), while observer $O_2$ sees only the initial SQL
+string and final execution trace.  A translator $T_{12}$ must
+reconstruct the SQL from the AST evolution: it can parse the initial
+AST root, emit the corresponding SQL, and summarize the execution
+steps by their side effects.  The reverse translator $T_{21}$ parses
+the SQL and heuristically infers an AST evolution consistent with the
+execution trace, incurring some distortion.  The description lengths
+$\mathrm{DL}(T_{12}), \mathrm{DL}(T_{21})$ and distortion costs
+quantify how ``close'' these two viewpoints are in rulial space.
+
+Let $\mathrm{DL}(T)$ be a prefix-code description length for $T$
+(MDL cost), and let $\mathrm{Dist}$ be a distortion metric on observed
+traces.  Intuitively, we measure how far two observers are by asking:
+how complex is a program that translates the traces of $O_1$ into those
+of $O_2$ (and back again), and how much distortion does that translation
+incur?  Minimum Description Length (MDL) gives a principled way to
+quantify program complexity as a description length in bits; we combine
+this with a distortion metric on traces to obtain our notion of rulial
+distance.
+
+We then define a symmetric cost:
+\[
+  D_{\tau,m}(O_1,O_2)
+   = \inf_{T_{12},T_{21}}
+      \Bigl(
+        \mathrm{DL}(T_{12}) + \mathrm{DL}(T_{21})
+        + \lambda \bigl(
+           \mathrm{Dist}(O_2, T_{12}\circ O_1) +
+           \mathrm{Dist}(O_1, T_{21}\circ O_2)
+        \bigr)
+      \Bigr)
+\]
+under time and memory budgets $(\tau,m)$.
+
+\begin{proposition}[Pseudometric]
+$D_{\tau,m}$ is a pseudometric on observers: it is nonnegative,
+symmetric, and $D_{\tau,m}(O,O)=0$ for all $O$.
+\end{proposition}
+
+\begin{theorem}[Triangle inequality for rulial distance]\label{thm:rulial-triangle}
+Assume:
+\begin{enumerate}[leftmargin=*]
+  \item the description length $\mathrm{DL}$ is based on a prefix code
+    and satisfies, for some constant $c\ge 0$,
+    \[
+      \mathrm{DL}(T_{13})
+      \le \mathrm{DL}(T_{12}) + \mathrm{DL}(T_{23}) + c
+    \]
+    whenever $T_{13}$ is a composition of translators $T_{23}\circ T_{12}$;
+  \item the distortion measure $\mathrm{Dist}$ is a metric on observer
+    traces, hence satisfies the usual triangle inequality.
+\end{enumerate}
+Then the MDL-based rulial distance $D_{\tau,m}$ is a pseudometric and
+satisfies a triangle inequality up to an additive constant:
+\[
+  D_{\tau,m}(O_1,O_3)
+  \le D_{\tau,m}(O_1,O_2) + D_{\tau,m}(O_2,O_3) + 2c.
+\]
+\end{theorem}
+
+\begin{proof}
+Nonnegativity and symmetry are immediate from the definition of
+$D_{\tau,m}$ as an infimum over sums of nonnegative symmetric terms.
+
+For the triangle inequality, fix $\varepsilon>0$ and choose near-optimal
+translators $(T_{12},T_{21})$ and $(T_{23},T_{32})$ attaining the
+infima for $D_{\tau,m}(O_1,O_2)$ and $D_{\tau,m}(O_2,O_3)$ up to
+$\varepsilon/2$.  Form composite translators
+$T_{13}=T_{23}\circ T_{12}$ and $T_{31}=T_{21}\circ T_{32}$.
+By the subadditivity of $\mathrm{DL}$,
+\[
+  \mathrm{DL}(T_{13}) \le \mathrm{DL}(T_{12})+\mathrm{DL}(T_{23})+c,
+  \qquad
+  \mathrm{DL}(T_{31}) \le \mathrm{DL}(T_{21})+\mathrm{DL}(T_{32})+c.
+\]
+By the triangle inequality for $\mathrm{Dist}$,
+\[
+  \mathrm{Dist}(O_3,T_{13}\circ O_1)
+  \le \mathrm{Dist}(O_3,T_{23}\circ O_2)
+     +\mathrm{Dist}(O_2,T_{12}\circ O_1),
+\]
+and similarly with roles reversed.
+
+Summing these bounds and using the near-optimality of the chosen
+translators yields
+\[
+  D_{\tau,m}(O_1,O_3)
+  \le D_{\tau,m}(O_1,O_2) + D_{\tau,m}(O_2,O_3) + 2c + \varepsilon.
+\]
+Since $\varepsilon>0$ was arbitrary, the inequality without $\varepsilon$
+follows.
+\end{proof}
+
+The quantity $D_{\tau,m}$ is the \emph{rulial distance} between
+observers: it measures how hard it is to translate between descriptions
+of the same underlying history.  Observers with small distance live in
+nearby ``frames''; those with large distance inhabit distant regions of
+the Ruliad.
+
+\subsection{Observer projections of wormholes}
+
+Given a wormhole $(S_0,P)$, different observers may:
+
+\begin{itemize}[leftmargin=*]
+  \item expose only coarse-grained stages of $P$ (e.g.\ AST$\to$IR$\to$SQL);
+  \item restrict to semantic effects (e.g.\ DB schema, invariants);
+  \item highlight only adversarial branches;
+  \item or inspect every microstep.
+\end{itemize}
+
+The holographic encoding thus supports a wide range of observer
+perspectives from a single payload.
+
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}[
+      wormhole/.style={rectangle,draw=green!60!black,fill=green!5,thick,rounded corners,
+                       minimum width=32mm,minimum height=14mm,align=center},
+      observer/.style={rectangle,draw=blue!70!black,fill=blue!8,thick,rounded corners=3pt,
+                       minimum width=18mm,minimum height=8mm,align=center,font=\small},
+      arrow/.style={-Latex,thick},
+      >=Latex
+    ]
+
+    % Central wormhole
+    \node[wormhole] (W) at (0,0)
+      {wormhole\\[-1pt]
+       \scriptsize $(S_0,P)$};
+
+    % Observers
+    \node[observer] (O1) at (-3.5,2.2) {$O_1$\\[-2pt]\scriptsize coarse stages};
+    \node[observer] (O2) at (3.5,2.2) {$O_2$\\[-2pt]\scriptsize semantic};
+    \node[observer] (O3) at (-3.5,-2.2) {$O_3$\\[-2pt]\scriptsize adversarial};
+    \node[observer] (O4) at (3.5,-2.2) {$O_4$\\[-2pt]\scriptsize full microsteps};
+
+    % Projections
+    \draw[arrow,blue!70!black] (W.north west) -- (O1.south east);
+    \draw[arrow,blue!70!black] (W.north east) -- (O2.south west);
+    \draw[arrow,blue!70!black] (W.south west) -- (O3.north east);
+    \draw[arrow,blue!70!black] (W.south east) -- (O4.north west);
+
+    % Labels on arrows
+    \node[rotate=45,font=\scriptsize] at (-1.8,1.2) {project};
+    \node[rotate=-45,font=\scriptsize] at (1.8,1.2) {project};
+    \node[rotate=-45,font=\scriptsize] at (-1.8,-1.2) {project};
+    \node[rotate=45,font=\scriptsize] at (1.8,-1.2) {project};
+
+  \end{tikzpicture}
+  \caption{Multiple observers projecting the same wormhole $(S_0,P)$
+  into different trace formats.  Each observer $O_i$ extracts a
+  different view of the interior evolution: coarse-grained stages,
+  semantic invariants, adversarial branches, or full microsteps.
+  The rulial distance measures the complexity of translating
+  between these views.}
+  \label{fig:observer-projections}
+\end{figure}

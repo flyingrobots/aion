@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+\usepackage{enumitem}
+
+\usepackage{titlesec}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\input{macros}
+
+\title{Computational Holography\\[0.4em]
+  \large Recursive Metagraphs, Rulial Distance,\\
+  and the Foundations for Deterministic Multiway Computation}
+
+\author{James Ross\\
+  \small Independent Researcher\\
+  \small \texttt{james@flyingrobots.dev}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a formal model of \emph{computational holography}: a way of
+representing computation in which the entire interior evolution of a
+system is encoded on the ``boundary''---the provenance payload on a
+single recursive metagraph edge.  Building on double--pushout graph
+rewriting in adhesive categories, we define Recursive Metagraphs (RMGs),
+give a deterministic concurrent operational semantics, prove tick-level
+confluence and a two-plane commutation theorem, and state conditions for
+global confluence.  We then introduce provenance payloads and show how
+they provide an information-complete, holographic encoding of a
+computation's history.  Finally, we define an MDL-based \emph{rulial
+distance} between observers, relate RMG dynamics to multiway systems and
+the Ruliad, and outline how this structure underlies the AI$\Omega$N
+C$\Omega$MPUTER---a new, provenance-native machine model.
+\end{abstract}
+
+\tableofcontents
+
+\input{sections/intro}
+\input{sections/rmg}
+\input{sections/dpo_rmg}
+\input{sections/determinism_confluence}
+\input{sections/holography}
+\input{sections/wormholes}
+\input{sections/rulial_distance}
+\input{sections/multiway_ruliad}
+\input{sections/discussion}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

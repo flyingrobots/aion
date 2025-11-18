@@ -1,0 +1,85 @@
+\sectionbreak
+\section{Discussion and Future Work}
+\label{sec:discussion}
+
+We have defined Recursive Metagraphs, given a deterministic concurrent
+DPOI semantics, proved key confluence properties, and introduced a
+holographic provenance model in which the boundary of a computation
+encodes its entire interior evolution.  We have also outlined an
+MDL-based rulial geometry on observers and connected RMG rewriting to
+multiway systems.
+
+\subsection{Related work}
+
+Our work builds on several research traditions:
+
+\paragraph{Algebraic graph rewriting.}
+The DPO (Double Pushout) approach to graph rewriting was introduced
+by Ehrig and others~\cite{EhrigLowe1997,EEPT06} and extended to
+adhesive categories by Lack and Soboci{\'n}ski~\cite{LS06}.  We build
+directly on these foundations, applying DPO semantics both to the
+skeleton plane and to attachment fibers.  The tick-level confluence
+theorem (Theorem~\ref{thm:tick-confluence}) is a specialization of the
+standard concurrency theorem for adhesive systems.
+
+\paragraph{Confluence and termination.}
+The critical-pair lemma and Newman's lemma are classical tools in
+term rewriting; for decreasing-diagram techniques, see van
+Oostrom~\cite{vanOostrom1994}.  Our conditional global confluence
+result (Theorem~\ref{thm:global}) invokes these standard methods in
+the graph-rewriting setting.
+
+\paragraph{Multiway systems and the Ruliad.}
+Wolfram~\cite{Wolfram2020} introduced multiway systems and the
+Ruliad as a framework for fundamental physics and metamathematics.
+Our RMG rewriting naturally induces multiway graphs; the determinism
+discipline we impose selects unique worldlines within this larger
+possibility space.  The rulial distance in Section~\ref{sec:rulial}
+is our contribution to the problem of quantifying observer
+differences.
+
+\paragraph{Minimum Description Length.}
+The MDL principle, pioneered by Rissanen~\cite{Rissanen1978}, provides
+a rigorous information-theoretic basis for model selection and
+compression.  We apply MDL to measure the complexity of
+observer-to-observer translators, yielding a computable pseudometric
+on the space of descriptions.
+
+\paragraph{Categorical computation and diagrammatic reasoning.}
+String diagrams and categorical algebra have been successfully applied
+to quantum computing and concurrency~\cite{CoeckeDuncan2011}.  Our
+two-plane fibration view (Section~\ref{sec:determinism}) is in this
+spirit: attachments live in fibers, and reindexing functors transport
+attachment updates along skeleton morphisms.
+
+The novelty of our approach lies in the synthesis: combining DPO
+rewriting on recursive structures, deterministic concurrency via a
+two-plane discipline, and holographic provenance encoding, all within
+a single framework with explicit confluence guarantees.
+
+Several directions remain:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Full global confluence analysis.}  For concrete rule
+    packs used in practice, automated critical-pair analysis and
+    decreasing-diagram labellings can provide machine-checkable
+    confluence certificates.
+  \item \textbf{Zero-knowledge provenance.}  Because payloads identify
+    substructures via opaque, content-addressed pointers, it is natural
+    to layer cryptographic commitments and zero-knowledge proofs on top,
+    enabling external verifiers to check correctness properties without
+    learning private data.
+  \item \textbf{Temporal logic and Time Cube.}  The Chronos--Kairos--Aion
+    triad suggests new modal and temporal logics for reasoning about
+    linear time, branch points, and the surrounding possibility space.
+  \item \textbf{C$\Omega$MPUTER architecture.}  Building on this foundation,
+    the companion paper will define the AI$\Omega$N C$\Omega$MPUTER: a machine model
+    whose basic step is a provenance-carrying RMG rewrite, supporting
+    backward- and forward-traceable computation, multiverse debugging,
+    and glass-box AI cognition.
+\end{itemize}
+
+The long-term vision is that computational holography becomes as
+standard as content-addressing and version control are today: every
+nontrivial system records not just \emph{what} happened, but a
+compact, verifiable encoding of \emph{how} it happened.
