@@ -22,9 +22,11 @@ under the following constructors:
 \end{definition}
 
 We write an element of $\RMG$ as either an atom or as a ``1-skeleton''
-graph decorated by attachments on vertices and edges.  This
-definition agrees with the set-theoretic and initial-algebra
-presentation developed in previous technical notes.
+graph decorated by attachments on vertices and edges.  Attachments
+themselves may be recursive metagraphs, so this attachment structure
+can nest arbitrarily deeply.  This definition agrees with the
+set-theoretic and initial-algebra presentation developed in previous
+technical notes.
 
 \paragraph{Example (A tiny recursive metagraph).}
 As a concrete instance, consider a program call graph where each
@@ -142,7 +144,7 @@ For convenience, we collect the main notation introduced so far:
 \begin{tabular}{ll}
 \textbf{Symbol} & \textbf{Meaning} \\[2pt]
 \hline\\[-8pt]
-$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state (one object in a universe $U$) \\
+$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state (one object in a universe $\mathcal{U}$) \\
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ & DPOI rule \\
 $\mu_i$ & microstep label \\
 $P = (\mu_0,\dots,\mu_{n-1})$ & provenance payload \\

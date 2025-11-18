@@ -58,7 +58,9 @@ translator $T$ (its MDL cost).  Let
   \mathrm{dist}_{\mathrm{tr}} : \mathcal{Y} \times \mathcal{Y}
     \to \mathbb{R}_{\ge 0}
 \]
-be a metric on individual traces.  We lift this pointwise to observers
+be a metric on individual traces (for example, an $L_1$ distance on
+symbol streams or an edit distance on labelled paths).  We lift this
+pointwise to observers
 by defining, for observers $O,O' : \Hist(U,R) \to \mathcal{Y}$,
 \[
   \mathrm{Dist}(O,O')
@@ -99,7 +101,7 @@ We then define the budgeted MDL-based distance
       \Bigr).
 \]
 
-\begin{lemma}\label{lem:rulial-basic}
+\begin{lemma}[Basic properties of $D_{\tau,m}$]\label{lem:rulial-basic}
 For all observers $O_1,O_2$ and budgets $(\tau,m)$, the distance
 $D_{\tau,m}(O_1,O_2)$ is nonnegative and symmetric, and
 $D_{\tau,m}(O,O)=0$ for every observer $O$.
