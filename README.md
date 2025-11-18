@@ -68,7 +68,6 @@ aion/
     │   ├── rulial_distance.tex
     │   ├── multiway_ruliad.tex
     │   └── discussion.tex
-    └── book.txt          # Concatenated source (for reference)
 ```
 
 ## Key Concepts
