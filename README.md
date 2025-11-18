@@ -95,6 +95,7 @@ aion/
 ## Key Concepts
 
 ### Recursive Metagraphs
+
 A graph where every node and edge can carry an attached subgraph, recursively. Formally:
 
 ```math
@@ -104,6 +105,7 @@ A graph where every node and edge can carry an attached subgraph, recursively. F
 where $G$ is a skeleton graph and $\alpha$, $\beta$ attach RMGs to nodes and edges.
 
 ### Wormholes
+
 A **wormhole** $(S_0, P)$ consists of:
 - An initial RMG state $S_0$
 - A provenance payload $P = (\mu_0, \dots, \mu_{n-1})$ recording microsteps
@@ -114,6 +116,7 @@ The **boundary** is just the pair $(S_0, P)$.
 **Computational holography** proves these are equivalent: the boundary encodes the volume.
 
 ### Rulial Distance
+
 An MDL-based metric $D_{\tau,m}(O_1, O_2)$ measuring how complex it is to translate between two observers' views of the same computation. Gives geometry to "observer space" in the Ruliad.
 
 ## Citation
