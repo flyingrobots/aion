@@ -72,7 +72,7 @@ make clean
 
 ## Repository Structure
 
-```
+```text
 aion/
 ├── README.md             # This file
 └── aion-holography/
