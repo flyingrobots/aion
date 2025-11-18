@@ -1,0 +1,77 @@
+# Obsidian vault configuration
+.obsidian/
+
+# Custom ignored directory
+ignored/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex.gz(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ilg
+*.ind
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+*.pdf
+*.xdv
+
+# LaTeX temporary files
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.loa
+*.lol
+*.ptc
+*.tdo
+*.upa
+*.upb
+*.cb
+*.cb2
+.*.lb
+
+# LaTeX intermediate files
+*-blx.aux
+*-blx.bib
+*.auxlock
+*.bak
+*.sav
+*.end
+
+# Build directories
+build/
+dist/
+out/
+output/
+
+# Editor files
+*~
+*.swp
+*.swo
+*.kate-swp
+.DS_Store
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+Desktop.ini
