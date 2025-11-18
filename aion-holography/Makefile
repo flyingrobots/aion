@@ -4,6 +4,8 @@ TEX     = pdflatex
 BIB     = bibtex
 MAIN    = main
 
+.PHONY: all clean distclean
+
 all: $(MAIN).pdf
 
 $(MAIN).pdf: $(MAIN).tex sections/*.tex macros.tex references.bib
