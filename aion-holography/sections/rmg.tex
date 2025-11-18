@@ -38,8 +38,9 @@ $\beta(e_{\mathsf{call}})$ the call provenance.
 
 \subsection{Initial algebra viewpoint}
 
-Let $\mathcal{G}$ be a collection of allowable skeleton shapes
-(finite directed multigraphs).  Define a polynomial endofunctor
+Let $\mathcal{G}$ be a small collection of allowable skeleton shapes
+(finite directed multigraphs up to isomorphism).  Define a finitary
+polynomial endofunctor
 $F : \Set \To \Set$ by
 \[
   F(X) = P + \coprod_{S\in\mathcal{G}} (V_S \To X) \times (E_S \To X).
@@ -52,23 +53,19 @@ action on atoms and on decorated skeletons.
 \subsection{Morphisms and category of RMGs}
 
 \begin{definition}[RMG morphism]
-A morphism $f : (S,\alpha,\beta) \To (S',\alpha',\beta')$ consists of:
+We define morphisms by structural recursion on RMG depth.  A morphism
+$f : (S,\alpha,\beta) \To (S',\alpha',\beta')$ consists of:
 \begin{itemize}[leftmargin=*]
   \item a graph homomorphism of skeletons $f_V : V \To V'$, $f_E : E \To
     E'$ preserving sources and targets; and
   \item for each $v \in V$ a morphism of attachments
-    $f_v : \alpha(v) \To \alpha'(f_V(v))$ in $\RMG$, and similarly for
-    edges.
+    $f_v : \alpha(v) \To \alpha'(f_V(v))$ and, for each $e \in E$, a
+    morphism $f_e : \beta(e) \To \beta'(f_E(e))$, defined recursively
+    using the same clause whenever an attachment is itself of the form
+    $(S,\alpha,\beta)$.
 \end{itemize}
 Composition and identities are defined componentwise.
 \end{definition}
-
-This makes $\RMG$ into a category.  In practice, we will not need
-arbitrary morphisms; what matters is that monos and pushouts along monos
-exist, so that algebraic graph rewriting applies.  We obtain such a
-setting by working with typed open graphs and treating an RMG state as a
-skeleton in $\OGraph_T$ plus attachment objects in the fibers.
-
 \begin{figure}[t]
   \centering
   \begin{tikzpicture}[
@@ -114,7 +111,7 @@ skeleton in $\OGraph_T$ plus attachment objects in the fibers.
       \node[anode] (c1) at (-0.6,0) {};
       \node[anode] (c2) at (0.6,0) {};
       \draw[aedge] (c1) -- (c2);
-      \node at (0,-0.8) {\small $\beta(e)$};
+      \node at (0,-0.8) {\small $\beta(e_{\mathsf{call}})$};
     \end{scope}
     \draw[thin,dashed] (1.5,-0.2) -- (1.5,-1.4);
 
@@ -145,7 +142,7 @@ For convenience, we collect the main notation introduced so far:
 \begin{tabular}{ll}
 \textbf{Symbol} & \textbf{Meaning} \\[2pt]
 \hline\\[-8pt]
-$\mathcal{U} = (G;\alpha,\beta)$ & RMG state \\
+$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state (one object in a universe $U$) \\
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ & DPOI rule \\
 $\mu_i$ & microstep label \\
 $P = (\mu_0,\dots,\mu_{n-1})$ & provenance payload \\

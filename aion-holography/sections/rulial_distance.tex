@@ -15,9 +15,9 @@ paths between them.  An \emph{observer} is a functor
   O : \Hist(U,R) \To \mathcal{Y},
 \]
 where $\mathcal{Y}$ is a suitable category of observations (symbol
-streams, trace graphs, etc.), subject to resource budgets on time and
-memory.
-
+streams, trace graphs, etc.).  We assume that $O$ is realised by some
+algorithm subject to fixed time and memory budgets $(\tau,m)$; these
+budgets are reflected in the subscript of $D_{\tau,m}$ below.
 Different observers may:
 
 \begin{itemize}[leftmargin=*]

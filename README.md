@@ -5,6 +5,7 @@ This repository contains technical papers for the AIΩN Protocol.
 ## Current Papers
 
 ### Computational Holography for Recursive Metagraphs
+
 *Deterministic Concurrency, Provenance Encoding, and Rulial Distance*
 
 Location: `aion-holography/`
