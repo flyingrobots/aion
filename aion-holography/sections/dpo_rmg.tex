@@ -9,8 +9,9 @@ graphs and lift it to RMG states.
 
 Let $T$ be a finite set of types.
 Let $\OGraph_T$ be the category of $T$-typed open graphs, whose objects
-are cospans of monos $I \mono G \mono O$ and whose morphisms are
-commuting maps of cospans.  This category is adhesive; in particular,
+are cospans of monomorphisms $I \hookrightarrow G \hookleftarrow O$ and
+whose morphisms are commuting maps of cospans.  This category is
+adhesive; in particular,
 pushouts along monos exist and form Van Kampen squares.
 
 \begin{definition}[DPOI rule]
@@ -45,24 +46,12 @@ All arrows are monos in $\OGraph_T$.
 
 \subsection{RMG states as two-plane objects}
 
-An RMG \emph{state} will be written
-\[
-  \mathcal{U} = (G; \alpha,\beta)
-\]
-where $G \in \OGraph_T$ is the skeleton and $\alpha,\beta$ assign
-attachment objects in the appropriate fibers to nodes and edges of $G$.
-Rewriting operates in two ``planes'':
-
-\begin{itemize}[leftmargin=*]
-  \item \emph{attachment steps} are DPOI steps in the fibers
-    $\alpha(v)$, $\beta(e)$ that do not change $G$;
-  \item \emph{skeleton steps} are DPOI steps on $G$ itself, subject to
-    rules ensuring that attachments at preserved positions can be
-    transported.
-\end{itemize}
-
-A \emph{tick} consists of a finite family of attachment steps followed
-by a finite family of skeleton steps, chosen by the scheduler and
-satisfying independence and a no-delete-under-descent invariant.
+We work with RMG states and tick semantics as defined in
+\cref{def:rmg-state,def:rmg-tick}.  For convenience, recall that an
+RMG state consists of a typed open-graph skeleton together with
+attachment fibres, and a tick applies a scheduler-admissible batch of
+attachment and skeleton DPOI steps subject to the independence and
+no-delete/no-clone-under-descent conditions introduced in
+\cref{sec:determinism}.
 
 We now turn to the determinism properties of this semantics.

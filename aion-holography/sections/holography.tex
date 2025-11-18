@@ -30,13 +30,20 @@ particular, we assume it has a self-delimiting encoding.
 For a value $v$ in some state $S_i$ we define a \emph{derivation graph}
 $\mathcal{D}(v)$ whose nodes are intermediate values and whose edges are
 microstep applications that produced them; the construction is standard
-and we omit the routine details.  Because each microstep consumes only
-finitely many inputs and produces finitely many outputs, $\mathcal{D}(v)$
-is a finite, acyclic graph.
+and we omit the routine details.  Because we only consider finite derivations
+\[
+  S_0 \Rewrite^{\mu_0} S_1 \Rewrite^{\mu_1} \cdots
+  \Rewrite^{\mu_{n-1}} S_n,
+\]
+every provenance edge in $\mathcal{D}(v)$ points from a value in some
+state $S_j$ to a value in a strictly later state $S_{j'}$ with $j' > j$.
+Immutability ensures that values are never updated in-place, only created
+at later ticks.  Hence every causal chain leading to $v$ has length at
+most $n$, and $\mathcal{D}(v)$ is a finite, acyclic graph.
 
 \subsection{AION state packets as an instance}
 
-Operationally, the AI$\Omega$N runtime records each state transition as an
+Operationally, the \AION{} runtime records each state transition as an
 \emph{Aion State Packet} (ASP)
 \[
   \alpha = (S_{\mathrm{in}}, S_{\mathrm{out}}, R, P, t, \sigma),
@@ -66,8 +73,8 @@ length $n$ is a sequence
 \[
   P = (\mu_0,\mu_1,\dots,\mu_{n-1})
 \]
-of microstep labels such that there exists a unique (up to isomorphism)
-sequence of states
+of microstep labels such that, by determinism of the tick semantics,
+there exists a unique (up to isomorphism) sequence of states
 \[
   S_0 \Rewrite^{\mu_0} S_1 \Rewrite^{\mu_1} \cdots
        \Rewrite^{\mu_{n-1}} S_n
@@ -79,21 +86,31 @@ the pair $(S_0,P)$.
 \end{definition}
 
 By tick-level confluence
-(Theorem~\ref{thm:tick-confluence}), the result $S_n$ of replaying $P$
-from $S_0$ is unique up to isomorphism.
+(Theorem~\ref{thm:tick-confluence}), any interleaving of concurrent
+matches compatible with $P$ yields a final state isomorphic to $S_n$.
 
 \subsection{Backward provenance completeness}
 
 We first show that provenance is complete in the backward direction:
 every value admits a unique causal history inside the wormhole.
 
+As a design constraint on the runtime, we assume:
+\begin{itemize}[leftmargin=*]
+  \item \emph{No re-derivation (single producer):} if a microstep
+    would produce a value whose content hash already appears in any
+    stored state, the runtime reuses the existing value instead of
+    recording a new producing microstep.  Thus every content-addressed
+    value has a unique producing microstep in the ledger prefix.
+\end{itemize}
+
 \begin{theorem}[Backward provenance completeness]\label{thm:backward}
 Let $(S_0,P)$ be a wormhole with volume
 $S_0 \Rewrite^{\mu_0} \cdots \Rewrite^{\mu_{n-1}} S_n$, and let
 $v^\ast$ be a value occurring in $S_n$.  Under the assumptions of
-total provenance capture and immutable content-addressed values, the
-derivation graph $\mathcal{D}(v^\ast)$ inside this wormhole is unique
-up to isomorphism.
+total provenance capture, immutable content-addressed values, and the
+no re-derivation (single-producer) property, the derivation graph
+$\mathcal{D}(v^\ast)$ inside this wormhole is unique up to
+isomorphism.
 \end{theorem}
 
 \begin{proof}
@@ -119,21 +136,21 @@ unique.
 \emph{Inductive step.}
 Assume the statement holds for all values of depth at most $k$, and let
 $v^\ast$ have depth $k+1$.  By total provenance capture, $v^\ast$ is
-the output of some unique microstep $\mu_j$ in $P$, applied at state
-$S_j$; its inputs $v_1,\dots,v_m$ are values in $S_j$ of depth at most
-$k$.  By the induction hypothesis, each $\mathcal{D}(v_i)$ is unique
-up to isomorphism.  Determinism of the tick semantics ensures that the
-microstep $\mu_j$ applied to these inputs produces $v^\ast$
-uniquely; in particular, there is no alternative microstep that
-produces a value with the same hash from different inputs, because
-that would contradict immutability or determinism.
+the output of at least one microstep in $P$.  By the no re-derivation
+(single-producer) assumption, there is in fact a unique producing
+microstep $\mu_j$ with output position $o$, applied at state $S_j$;
+its inputs $v_1,\dots,v_m$ are values in $S_j$ of depth at most $k$.
+By the induction hypothesis, each $\mathcal{D}(v_i)$ is unique up to
+isomorphism.  Determinism of the tick semantics ensures that the
+microstep $\mu_j$ applied to these inputs produces $v^\ast$ uniquely.
 
 Thus $\mathcal{D}(v^\ast)$ is obtained by gluing together the unique
 graphs $\mathcal{D}(v_i)$ along the unique producing microstep
-$\mu_j$.  Any alternative derivation graph for $v^\ast$ would differ
-either in some $\mathcal{D}(v_i)$ or in the last producing step, both
-of which are ruled out by the induction hypothesis and determinism.
-Hence $\mathcal{D}(v^\ast)$ is unique up to isomorphism.
+$\mu_j$.  Any alternative derivation graph for $v^\ast$ would either
+change the last producing microstep or some subgraph $\mathcal{D}(v_i)$.
+The former is ruled out by the single-producer assumption, and the
+latter by the induction hypothesis.  Hence $\mathcal{D}(v^\ast)$ is
+unique up to isomorphism.
 \end{proof}
 
 \subsection{Computational holography}
@@ -168,7 +185,10 @@ Let $(S_0,P)$ be a wormhole.  Then:
     whose reconstruction yields an isomorphic volume.
 \end{enumerate}
 Thus the boundary data $(S_0,P)$ is information-complete with respect
-to the interior evolution.
+to the interior evolution: up to isomorphism, each finite derivation
+volume corresponds to a unique boundary and vice versa.  In particular,
+boundaries (considered up to isomorphism of $S_0$) are in bijection
+with isomorphism classes of finite derivation volumes.
 \end{theorem}
 
 \begin{figure}[t]
@@ -244,8 +264,10 @@ the reconstructed states are isomorphic to the original ones at each
 index, hence the reconstructed volume is isomorphic to the given
 volume.
 
-The two directions together establish a bijective correspondence (up to
-isomorphism) between finite derivations and boundaries $(S_0,P)$.
+The two directions together induce a bijection between isomorphism
+classes of finite derivations and isomorphism classes of boundaries
+$(S_0,P)$, where boundaries are quotiented by isomorphism of the
+initial state $S_0$.
 \end{proof}
 
 \begin{remark}[Relation to physical holographic principles]

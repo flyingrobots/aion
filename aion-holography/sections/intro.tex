@@ -15,8 +15,11 @@ model in which:
     recursive structure;
   \item all evolution of that state is given by well-typed graph
     rewrites;
-  \item the operational semantics is deterministic and confluent at the
-    level of ``ticks'' of computation; and
+  \item under an explicit independence discipline and
+    no-delete/no-clone-under-descent invariants, the operational
+    semantics is deterministic (up to typed open-graph isomorphism)
+    and confluent at the level of ``ticks'' of computation
+    (\cref{thm:tick-confluence,thm:two-plane,thm:global}); and
   \item the \emph{entire} interior evolution of a computation is stored
     in a compact \emph{provenance payload} attached to a single edge,
     providing an information-complete ``holographic'' encoding.
@@ -35,16 +38,16 @@ We extend this setting with:
     commutation, plus conditions for global confluence;
   \item a provenance payload calculus giving \emph{computational
     holography};
-  \item an MDL-based pseudometric on observers, the \emph{rulial
+  \item an MDL-based quasi-pseudometric on observers, the \emph{rulial
     distance};
   \item a correspondence between RMG derivations and multiway systems,
     clarifying the relationship to Wolfram's Ruliad.
 \end{enumerate}
 
-We deliberately keep the system-level AI$\Omega$N stack\footnote{%
+We deliberately keep the system-level \AION{} stack\footnote{%
 Pronounced ``eye-ON'' (rhymes with \emph{aeon}), with stress on the second syllable.}
 (AIONOS, Echo, Wesley, etc.) mostly offstage in this paper, mentioning
-it only to motivate the mathematics.  The companion ``C$\Omega$MPUTER''
+it only to motivate the mathematics.  The companion ``\COMPUTER{}''
 paper will build on these results to define the full machine model and
 operating system.
 
@@ -64,7 +67,7 @@ The main results of this paper are:
     the interior evolution, enabling reconstruction of the full
     derivation volume;
   \item \emph{Rulial distance} (Theorem~\ref{thm:rulial-triangle}):
-    an MDL-based pseudometric on observers that quantifies the
+    an MDL-based quasi-pseudometric on observers that quantifies the
     complexity of translating between different views of the same
     computation.
 \end{enumerate}

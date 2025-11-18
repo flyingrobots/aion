@@ -29,8 +29,14 @@ Different observers may:
 \subsection{Translators and MDL cost}
 
 A \emph{translator} between observers $O_1$ and $O_2$ is a functorial
-construction $T : O_1 \Rewrite O_2$ realized as a small DPOI
-transducer, together with a distortion metric on outputs.
+construction
+\[
+  T_{12} : O_1 \Rightarrow O_2
+\]
+realised as a small DPOI transducer: for each history
+$h \in \Hist(U,R)$ it maps the trace $O_1(h)$ to a trace
+$T_{12}(O_1(h))$ in the observation category~$\mathcal{Y}$.  Likewise
+we consider translators $T_{21} : O_2 \Rightarrow O_1$.
 
 \paragraph{Example (SQL$\leftrightarrow$AST translator).}
 Consider two observers of an RMG universe modeling a database
@@ -46,34 +52,69 @@ execution trace, incurring some distortion.  The description lengths
 $\mathrm{DL}(T_{12}), \mathrm{DL}(T_{21})$ and distortion costs
 quantify how ``close'' these two viewpoints are in rulial space.
 
-Let $\mathrm{DL}(T)$ be a prefix-code description length for $T$
-(MDL cost), and let $\mathrm{Dist}$ be a distortion metric on observed
-traces.  Intuitively, we measure how far two observers are by asking:
-how complex is a program that translates the traces of $O_1$ into those
-of $O_2$ (and back again), and how much distortion does that translation
-incur?  Minimum Description Length (MDL) gives a principled way to
-quantify program complexity as a description length in bits; we combine
-this with a distortion metric on traces to obtain our notion of rulial
-distance.
+Let $\mathrm{DL}(T)$ be a prefix-code description length for a
+translator $T$ (its MDL cost).  Let
+\[
+  \mathrm{dist}_{\mathrm{tr}} : \mathcal{Y} \times \mathcal{Y}
+    \to \mathbb{R}_{\ge 0}
+\]
+be a metric on individual traces.  We lift this pointwise to observers
+by defining, for observers $O,O' : \Hist(U,R) \to \mathcal{Y}$,
+\[
+  \mathrm{Dist}(O,O')
+  := \sup_{h \in \Hist(U,R)}
+       \mathrm{dist}_{\mathrm{tr}}\bigl(O(h),O'(h)\bigr).
+\]
+We assume that post-composition by any translator is $1$-Lipschitz:
+\[
+  \mathrm{Dist}(T\circ O, T\circ O')
+  \le \mathrm{Dist}(O,O')
+\]
+for all translators $T$ and observers $O,O'$.
 
-We then define a symmetric cost:
+Fix a weighting parameter $\lambda>0$ that trades off description
+length against distortion.
+
+For time and memory budgets $(\tau,m)$ we write
+$\Trans_{\tau,m}(O_1,O_2)$ for the set of translators from $O_1$ to
+$O_2$ realisable within those budgets, and assume each budget class is
+closed under finite composition.  We also assume a distinguished
+identity translator $I_O : O \Rightarrow O$ for every observer $O$
+with $\mathrm{DL}(I_O)=0$ and
+$\mathrm{Dist}(O, I_O \circ O)=0$, corresponding to a null program
+that simply re-emits its input.
+
+We then define the budgeted MDL-based distance
 \[
   D_{\tau,m}(O_1,O_2)
-   = \inf_{T_{12},T_{21}}
+   := \inf_{\substack{
+         T_{12}\in\Trans_{\tau,m}(O_1,O_2)\\
+         T_{21}\in\Trans_{\tau,m}(O_2,O_1)}}
       \Bigl(
         \mathrm{DL}(T_{12}) + \mathrm{DL}(T_{21})
         + \lambda \bigl(
            \mathrm{Dist}(O_2, T_{12}\circ O_1) +
            \mathrm{Dist}(O_1, T_{21}\circ O_2)
         \bigr)
-      \Bigr)
+      \Bigr).
 \]
-under time and memory budgets $(\tau,m)$.
 
-\begin{proposition}[Pseudometric]
-$D_{\tau,m}$ is a pseudometric on observers: it is nonnegative,
-symmetric, and $D_{\tau,m}(O,O)=0$ for all $O$.
-\end{proposition}
+\begin{lemma}\label{lem:rulial-basic}
+For all observers $O_1,O_2$ and budgets $(\tau,m)$, the distance
+$D_{\tau,m}(O_1,O_2)$ is nonnegative and symmetric, and
+$D_{\tau,m}(O,O)=0$ for every observer $O$.
+\end{lemma}
+
+\begin{proof}
+Nonnegativity and symmetry are immediate from the definition of
+$D_{\tau,m}$ as an infimum over sums of nonnegative symmetric terms.
+
+For self-distance, consider the pair of identity translators
+$(I_O,I_O)$.  By assumption $\mathrm{DL}(I_O)=0$ and the distortions
+$\mathrm{Dist}(O,I_O\circ O)$ vanish, so the objective value of
+$(I_O,I_O)$ is zero.  Hence $D_{\tau,m}(O,O)\le 0$, and
+nonnegativity implies $D_{\tau,m}(O,O)=0$.
+\end{proof}
 
 \begin{theorem}[Triangle inequality for rulial distance]\label{thm:rulial-triangle}
 Assume:
@@ -84,39 +125,46 @@ Assume:
       \mathrm{DL}(T_{13})
       \le \mathrm{DL}(T_{12}) + \mathrm{DL}(T_{23}) + c
     \]
-    whenever $T_{13}$ is a composition of translators $T_{23}\circ T_{12}$;
-  \item the distortion measure $\mathrm{Dist}$ is a metric on observer
-    traces, hence satisfies the usual triangle inequality.
+    whenever $T_{13}$ is a composition $T_{23}\circ T_{12}$;
+  \item the lifted distortion measure $\mathrm{Dist}$ is a metric on
+    observers and post-composition by any translator is
+    $1$-Lipschitz:
+    $\mathrm{Dist}(T\circ O,T\circ O') \le \mathrm{Dist}(O,O')$;
+  \item for each budget $(\tau,m)$ the classes
+    $\Trans_{\tau,m}(O_i,O_j)$ are closed under finite composition.
 \end{enumerate}
-Then the MDL-based rulial distance $D_{\tau,m}$ is a pseudometric and
-satisfies a triangle inequality up to an additive constant:
+Then $D_{\tau,m}$ satisfies the triangle inequality up to an additive
+constant:
 \[
   D_{\tau,m}(O_1,O_3)
   \le D_{\tau,m}(O_1,O_2) + D_{\tau,m}(O_2,O_3) + 2c.
 \]
+In particular, together with \cref{lem:rulial-basic} this makes
+$D_{\tau,m}$ a quasi-pseudometric (a pseudometric up to additive slack
+$2c$) on observers.
 \end{theorem}
 
 \begin{proof}
-Nonnegativity and symmetry are immediate from the definition of
-$D_{\tau,m}$ as an infimum over sums of nonnegative symmetric terms.
-
-For the triangle inequality, fix $\varepsilon>0$ and choose near-optimal
-translators $(T_{12},T_{21})$ and $(T_{23},T_{32})$ attaining the
-infima for $D_{\tau,m}(O_1,O_2)$ and $D_{\tau,m}(O_2,O_3)$ up to
-$\varepsilon/2$.  Form composite translators
-$T_{13}=T_{23}\circ T_{12}$ and $T_{31}=T_{21}\circ T_{32}$.
-By the subadditivity of $\mathrm{DL}$,
+Fix $\varepsilon>0$ and choose near-optimal translators
+$(T_{12},T_{21})$ and $(T_{23},T_{32})$ attaining the infima for
+$D_{\tau,m}(O_1,O_2)$ and $D_{\tau,m}(O_2,O_3)$ up to $\varepsilon/2$.
+Form composite translators $T_{13}=T_{23}\circ T_{12}$ and
+$T_{31}=T_{21}\circ T_{32}$.  By the subadditivity of $\mathrm{DL}$,
 \[
   \mathrm{DL}(T_{13}) \le \mathrm{DL}(T_{12})+\mathrm{DL}(T_{23})+c,
   \qquad
   \mathrm{DL}(T_{31}) \le \mathrm{DL}(T_{21})+\mathrm{DL}(T_{32})+c.
 \]
-By the triangle inequality for $\mathrm{Dist}$,
-\[
+By the triangle inequality for $\mathrm{Dist}$ and the $1$-Lipschitz
+property of post-composition, we have
+\begin{align*}
   \mathrm{Dist}(O_3,T_{13}\circ O_1)
-  \le \mathrm{Dist}(O_3,T_{23}\circ O_2)
-     +\mathrm{Dist}(O_2,T_{12}\circ O_1),
-\]
+    &= \mathrm{Dist}(O_3,T_{23}\circ T_{12}\circ O_1)\\
+    &\le \mathrm{Dist}(O_3,T_{23}\circ O_2)
+        + \mathrm{Dist}(T_{23}\circ O_2, T_{23}\circ T_{12}\circ O_1)\\
+    &\le \mathrm{Dist}(O_3,T_{23}\circ O_2)
+        + \mathrm{Dist}(O_2, T_{12}\circ O_1),
+\end{align*}
 and similarly with roles reversed.
 
 Summing these bounds and using the near-optimality of the chosen
@@ -125,8 +173,8 @@ translators yields
   D_{\tau,m}(O_1,O_3)
   \le D_{\tau,m}(O_1,O_2) + D_{\tau,m}(O_2,O_3) + 2c + \varepsilon.
 \]
-Since $\varepsilon>0$ was arbitrary, the inequality without $\varepsilon$
-follows.
+Since $\varepsilon>0$ was arbitrary, the inequality without
+$\varepsilon$ follows.
 \end{proof}
 
 The quantity $D_{\tau,m}$ is the \emph{rulial distance} between

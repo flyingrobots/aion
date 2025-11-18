@@ -2,9 +2,9 @@
 \section{Wormholes: Collapsing Derivations into a Single Edge}
 \label{sec:wormholes}
 
-From the perspective of the ambient RMG, an ASP provides a single edge
-$S_0 \Rewrite S_n$ labelled by a payload $P$.  Internally, $P$ encodes a
-whole derivation.
+From the perspective of the ambient RMG, an Aion State Packet (ASP; see
+\S\ref{sec:holography}) provides a single edge $S_0 \Rewrite S_n$
+labelled by a payload $P$.  Internally, $P$ encodes a whole derivation.
 
 We refer to such a provenance-labelled edge as an \emph{RMG wormhole}.
 
@@ -16,8 +16,8 @@ Given a derivation
 \]
 we form the payload $P = (\mu_0,\dots,\mu_{n-1})$ and replace the path by a
 single wormhole edge $S_0 \Rewrite^P S_n$ in the outer graph.  The
-computational holography theorem ensures that nothing is lost: the path
-can be reconstructed on demand.
+computational holography theorem (\cref{thm:holography}) ensures that
+nothing is lost: the path can be reconstructed on demand.
 
 This provides a powerful compression mechanism on the RMG:
 
@@ -61,10 +61,13 @@ This provides a powerful compression mechanism on the RMG:
 \subsection{Forking at the boundary}
 
 Because the boundary encodes the interior sequence, we can fork
-computations \emph{at the boundary}.  Given a payload $P$, we can form a
-modified payload $P'$ that agrees with $P$ up to some index $k$ and then
-takes an alternative sequence of microsteps.  Reconstruction from
-$(S_0,P')$ yields an alternative interior and a different final state.
-This underlies the multiverse execution model used in the AI$\Omega$N
-C$\Omega$MPUTER, where adversarial, optimized, and safety universes are spawned
-by varying payloads while sharing prefixes.
+computations \emph{at the boundary}.  Given a payload
+$P = (\mu_0,\dots,\mu_{n-1})$, we can form a modified payload $P'$
+that agrees with $P$ on a prefix $(\mu_0,\dots,\mu_k)$ for some
+$0 \le k < n$ and then takes an alternative sequence of microsteps
+that still forms a valid RMG derivation from the intermediate state
+$S_k$.  Under the same hypotheses as in \cref{thm:holography},
+$\Recon(S_0,P')$ is therefore well-defined and yields a distinct, but
+compatible, volume.  This underlies the multiverse execution model used
+in the \AION{} \COMPUTER{}, where adversarial, optimized, and safety
+universes are spawned by varying payloads while sharing prefixes.
