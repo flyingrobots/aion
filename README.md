@@ -75,16 +75,16 @@ aion/
     ├── macros.tex        # Custom commands and theorem environments
     ├── references.bib    # Bibliography
     ├── Makefile
-    ├── sections/
-    │   ├── intro.tex
-    │   ├── rmg.tex
-    │   ├── dpo_rmg.tex
-    │   ├── determinism_confluence.tex
-    │   ├── holography.tex
-    │   ├── wormholes.tex
-    │   ├── rulial_distance.tex
-    │   ├── multiway_ruliad.tex
-    │   └── discussion.tex
+    └── sections/
+        ├── intro.tex
+        ├── rmg.tex
+        ├── dpo_rmg.tex
+        ├── determinism_confluence.tex
+        ├── holography.tex
+        ├── wormholes.tex
+        ├── rulial_distance.tex
+        ├── multiway_ruliad.tex
+        └── discussion.tex
 ```
 
 ## Key Concepts
