@@ -31,11 +31,26 @@ This forms the mathematical foundation of the AIΩN Protocol.
 
 ## Building the Papers
 
-### Prerequisites
+### Automated Builds (CI/CD)
+
+Every push to `main` automatically builds all papers via GitHub Actions. The compiled PDFs are available as:
+- **Artifacts** on each commit (30-day retention)
+- **Release assets** when you create a tagged release
+
+To create a release with PDF:
+```bash
+git tag -a v1.0 -m "Release v1.0"
+git push origin v1.0
+# Then create release on GitHub
+```
+
+### Local Build
+
+#### Prerequisites
 - A working LaTeX installation (TeX Live 2023+ recommended)
 - Standard packages: `amsmath`, `tikz`, `amsthm`, `enumitem`, `cleveref`
 
-### Compile
+#### Compile
 ```bash
 cd aion-holography
 make
@@ -47,6 +62,8 @@ To clean build artifacts:
 ```bash
 make clean
 ```
+
+**Note**: PDFs are gitignored (standard practice). Use CI artifacts or local builds to access compiled papers.
 
 ## Repository Structure
 

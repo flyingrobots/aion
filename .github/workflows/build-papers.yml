@@ -1,0 +1,46 @@
+name: Build LaTeX Papers
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  release:
+    types: [ created ]
+
+jobs:
+  build-holography:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Compile LaTeX (aion-holography)
+      uses: xu-cheng/latex-action@v3
+      with:
+        working_directory: aion-holography
+        root_file: main.tex
+        latexmk_use_xelatex: false
+        args: -pdf -interaction=nonstopmode -halt-on-error
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: holography-paper-pdf
+        path: aion-holography/main.pdf
+        retention-days: 30
+
+    - name: Rename PDF for release
+      if: github.event_name == 'release'
+      run: |
+        cd aion-holography
+        cp main.pdf computational-holography-rmg.pdf
+
+    - name: Upload PDF to release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: aion-holography/computational-holography-rmg.pdf
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
