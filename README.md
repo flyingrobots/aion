@@ -1,16 +1,19 @@
-# AIΩN Protocol Papers
+# AIΩN 
+
+<img alt="aion" src="https://github.com/user-attachments/assets/f1a901f5-2145-4d04-afc9-579034678d5b" width="450" align="left" />
+
+
+### Protocol Papers
 
 This repository contains technical papers for the AIΩN Protocol.
 
-## Current Papers
-
-### Computational Holography for Recursive Metagraphs
+#### Computational Holography for Recursive Metagraphs
 
 *Deterministic Concurrency, Provenance Encoding, and Rulial Distance*
 
 Location: `aion-holography/`
 
-## Abstract
+### Abstract
 
 We define Recursive Metagraphs (RMGs)—graph structures where nodes and edges recursively carry subgraphs—and give them a deterministic concurrent operational semantics using Double Pushout (DPO) graph rewriting in adhesive categories.
 
