@@ -12,7 +12,8 @@ Let $\OGraph_T$ be the category of $T$-typed open graphs, whose objects
 are cospans of monomorphisms $I \hookrightarrow G \hookleftarrow O$ and
 whose morphisms are commuting maps of cospans.  This category is
 adhesive (see~\cite{LS06}); in particular, pushouts along monos exist
-and form Van Kampen squares.
+and form Van Kampen squares.  We use the shorthand $\mono$ for the
+monomorphism arrow $\hookrightarrow$.
 
 \begin{definition}[DPOI rule]
 A \emph{DPOI rule} is a span of monos in $\OGraph_T$
@@ -52,7 +53,9 @@ An RMG \emph{state} is a triple
   \mathcal{U} = (G;\alpha,\beta)
 \]
 where $G \in \OGraph_T$ is the skeleton and $\alpha,\beta$ assign
-attachment objects in the appropriate fibres to nodes and edges of $G$.
+attachment objects in the appropriate fibres (of the forgetful functor
+$\pi : \RMGState \to \OGraph_T$, see \cref{sec:determinism}) to nodes
+and edges of $G$.
 \end{definition}
 
 This separates the global state into a base skeleton and recursively

@@ -1,5 +1,5 @@
 \sectionbreak
-\section{Rulial Distance: A Computable Metric on Observer Space}
+\section{Rulial Distance: A Computable Quasi-Pseudometric on Observer Space}
 \label{sec:rulial}
 
 We next formalize observers and an MDL-based distance between them, the
@@ -25,6 +25,8 @@ Different observers may:
   \item aggregate or forget structure;
   \item expose different notions of causality.
 \end{itemize}
+Figure~\ref{fig:observer-projections} illustrates several such
+projections.
 
 \subsection{Translators, MDL Complexity, and Distortion}
 
@@ -67,7 +69,10 @@ by defining, for observers $O,O' : \Hist(U,R) \to \mathcal{Y}$,
   := \sup_{h \in \Hist(U,R)}
        \mathrm{dist}_{\mathrm{tr}}\bigl(O(h),O'(h)\bigr).
 \]
-We assume that post-composition by any translator is $1$-Lipschitz:
+We assume all observers considered produce traces in a common metric
+space of uniformly bounded diameter, so the supremum above is finite.
+We also assume that post-composition by any translator is
+$1$-Lipschitz:
 \[
   \mathrm{Dist}(T\circ O, T\circ O')
   \le \mathrm{Dist}(O,O')

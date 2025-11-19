@@ -13,10 +13,12 @@ $(MAIN).pdf: $(MAIN).tex sections/*.tex macros.tex references.bib
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)
 	$(TEX) $(MAIN)
-	$(TEX) $(MAIN)
 
 clean:
-	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
+	@if [ -f $(MAIN).tex ]; then \
+		rm -f $(MAIN).aux $(MAIN).bbl $(MAIN).blg $(MAIN).log \
+			$(MAIN).out $(MAIN).toc $(MAIN).lof $(MAIN).lot; \
+	fi
 
 distclean: clean
 	rm -f $(MAIN).pdf

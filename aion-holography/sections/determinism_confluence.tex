@@ -8,7 +8,9 @@ states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
 
 \subsection{Footprints and Independence on the Skeleton Plane}
 
-We work at the level of the skeleton plane.  Let
+We work at the level of the skeleton plane.  Write $G_S$ for the
+skeleton component of $G$, and likewise $L_S$, $K_S$, $R_S$ for the
+underlying skeleton graphs of a rule.  Let
 $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ be a DPOI rule.  A
 \emph{skeleton match} is a mono $m_S : L_S \hookrightarrow G_S$ in
@@ -79,7 +81,7 @@ The scheduler computes a maximal independent set of matches in the
 sense of \cref{def:batch}, using a safe over-approximation of
 $\Use\cup\Del$; we do not repeat the implementation details here.
 
-\begin{theorem}[Tick-level confluence]\label{thm:tick-confluence}
+\begin{theorem}[Skeleton-plane tick confluence]\label{thm:tick-confluence}
   Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
   $B = \{m_{i,S} : L_{i,S} \hookrightarrow G_S\}_{i\in I}$ be a
   scheduler--admissible batch for a family of DPOI rules.  Then any
@@ -132,6 +134,20 @@ isomorphic skeletons.  Lifting back along the fibration
 $\pi : \RMGState \to \OGraph_T$ yields the claimed determinism up to
 isomorphism for RMG states.
 \end{proof}
+
+Combining \cref{thm:tick-confluence} with the two-plane commutation
+result (\cref{thm:two-plane}) shows that a tick that satisfies the
+no-delete/no-clone discipline has a unique outcome up to
+isomorphism in the full RMG semantics.
+
+\begin{corollary}[Worldline uniqueness]\label{cor:worldline-uniqueness}
+Let an RMG runtime satisfy the assumptions of
+\cref{thm:tick-confluence,thm:two-plane,thm:global} together with the
+holography property (\cref{thm:holography}).  Then every schedule of a
+given tick produces the same RMG successor up to isomorphism, and the
+boundary data $(S_0,P)$ determines the interior derivation uniquely up
+to isomorphism.
+\end{corollary}
 
 \subsection{Two-plane commutation via a fibration}
 
@@ -198,9 +214,9 @@ invariant of \cref{def:no-delete}.  Let
 $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state generated from $R$.
 Let $A : \mathcal{U} \Rewrite \mathcal{U}_A$ be a finite composite of
 attachment steps in the fiber over $G$, and let
-$S : G \Rewrite G'$ be a composite of skeleton DPOI steps in the base
-induced by rules in $R$ such that the tick consisting of $A$ followed
-by $S$ satisfies the no-delete/no-clone-under-descent invariant.  Then
+$S : G \Rewrite G'$ be the skeleton DPOI step induced by the same tick
+such that the tick consisting of $A$ followed by $S$ satisfies the
+no-delete/no-clone-under-descent invariant.  Then
 there exists an attachment composite
 $A' : (G';\alpha',\beta') \Rightarrow (G';\alpha'',\beta'')$ in the
 fiber over $G'$ such that the following square in $\RMGState$ commutes
