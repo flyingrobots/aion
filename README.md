@@ -1,146 +1,86 @@
-# AIΩN 
+![aion](https://github.com/user-attachments/assets/3369bf0b-c251-45c0-94c4-56b9849d189e)
 
-<img alt="aion" src="https://github.com/user-attachments/assets/f1a901f5-2145-4d04-afc9-579034678d5b" width="450" align="left" />
+# Computational Holography
 
+## Recursive Metagraphs, Rulial Distance, and Deterministic Multiway Computation
 
-### Protocol Papers
+**Status:** Foundations Series (Active Research)  
+**Author:** James Ross  
+**License:** Open Research / Universal Charter v1.0.0
 
-This repository contains technical papers for the AIΩN Protocol.
+### 📖 Overview
 
-#### Computational Holography for Recursive Metagraphs
+This repository contains the formal mathematical definitions and proofs for the **AION Architecture**—a post-Von Neumann computing model based on **Recursive Metagraphs (RMG)**.
 
-*Deterministic Concurrency, Provenance Encoding, and Rulial Distance*
+The central thesis of this work is that by strictly enforcing algebraic graph rewriting (DPOI) within a "Two-Plane" commutation discipline, we can transform execution history from a transient side-effect into a tangible, geometric object. We call this **Computational Holography**: the ability to encode the entire volume of a computation's interior evolution onto its boundary edge.[1]
 
-Location: `aion-holography/`
+### Core Primitives
 
-### Abstract
+#### 1. Recursive Metagraphs (RMG)
 
-We define Recursive Metagraphs (RMGs)—graph structures where nodes and edges recursively carry subgraphs—and give them a deterministic concurrent operational semantics using Double Pushout (DPO) graph rewriting in adhesive categories.
+Standard graphs are flat. Hypergraphs allow multi-way relations but remain flat. An **RMG** is defined inductively: a graph where every node and edge can carry a payload, and that payload can itself be an entire RMG.
 
-The **computational holography theorem** shows that the entire interior evolution of a computation can be encoded on a "boundary": an initial state $S_0$ together with a provenance payload $P$. This boundary data is information-complete, enabling full reconstruction of the derivation volume on demand.
+* **Formal Definition:** RMG is the carrier of the initial algebra for the functor $F(X) = P + \prod_{S \in \mathcal{G}} (V_S \to X) \times (E_S \to X)$.[1]
+* **Capability:** This allows for infinite nesting of state, enabling the system to model hierarchical dependencies (like ASTs, containerized processes, or neural networks) natively in the graph topology.
 
-Key results include:
-- **Tick-level confluence**: parallel independent rewrites commute
-- **Two-plane commutation**: attachment and skeleton updates are order-independent
-- **Rulial distance**: an MDL-based pseudometric on observers
+#### 2. Double-Pushout with Interfaces (DPOI)
 
-This forms the mathematical foundation of the AIΩN Protocol.
+State evolution is not defined by pointer arithmetic, but by **Algebraic Graph Rewriting**.
 
----
+* We use **DPOI** in the adhesive category of Typed Open Graphs ($\text{OGraph}_T$).
+* Rules are spans $L \leftarrow K \rightarrow R$ representing the pattern to delete ($L \setminus K$) and the pattern to create ($R \setminus K$).[1]
 
-**Additional papers coming soon**, including:
-- The AIΩN CΩMPUTER: machine model and operational semantics
-- Glass-box AI cognition and multiverse debugging
-- Practical implementations and case studies
+#### 3. The "Two-Plane" Architecture
 
-## Building the Papers
+To manage concurrency in a recursive structure, we separate state into two orthogonal planes:
 
-### Automated Builds (CI/CD)
+* **Skeleton Plane:** The structural topology (the "container").
+* **Attachment Plane:** The internal data residing in the fibers of the nodes/edges.
+* **Theorem 4.6 (Two-Plane Commutation):** We prove that operations on the attachments commute with operations on the skeleton (up to transport). This mathematically validates the "Attachments-First" parallel execution strategy.[1]
 
-Every push to `main` automatically builds all papers via GitHub Actions. The compiled PDFs are available as:
-- **Artifacts** on each commit (30-day retention)
-- **Release assets** when you create a tagged release
+### Computational Holography
 
-To create a release with PDF:
+The most significant result of this work is the formalization of the **Wormhole**.
 
-```bash
-git tag -a v1.0 -m "Release v1.0"
-git push origin v1.0
-# Then create release on GitHub
-```
+> **Theorem 5.4 (Holographic Encoding):**
+> The boundary data $(S_0, P)$, consisting of an initial state $S_0$ and a provenance payload $P$, is information-complete with respect to the interior evolution $S_0 \Rightarrow^* S_n$.[1]
 
-### Local Build
+This implies:
 
-#### Prerequisites
-
-- A working LaTeX installation (TeX Live 2023+ recommended)
-- Standard packages: `amsmath`, `tikz`, `amsthm`, `enumitem`, `cleveref`
-
-#### Compile
-
-```bash
-cd aion-holography
-make
-```
-
-This produces `main.pdf` in the `aion-holography/` directory.
-
-To clean build artifacts:
-
-```bash
-make clean
-```
-
-**Note**: PDFs are gitignored (standard practice). Use CI artifacts or local builds to access compiled papers.
-
-## Repository Structure
-
-```text
-aion/
-├── README.md             # This file
-└── aion-holography/
-    ├── main.tex          # Document root
-    ├── macros.tex        # Custom commands and theorem environments
-    ├── references.bib    # Bibliography
-    ├── Makefile
-    └── sections/
-        ├── intro.tex
-        ├── rmg.tex
-        ├── dpo_rmg.tex
-        ├── determinism_confluence.tex
-        ├── holography.tex
-        ├── wormholes.tex
-        ├── rulial_distance.tex
-        ├── multiway_ruliad.tex
-        └── discussion.tex
-```
-
-## Key Concepts
-
-### Recursive Metagraphs
-
-A graph where every node and edge can carry an attached subgraph, recursively. Formally:
-
-```math
-\mathcal{U} = (G; \alpha, \beta)
-```
-
-where $G$ is a skeleton graph and $\alpha$, $\beta$ attach RMGs to nodes and edges.
-
-### Wormholes
-
-A **wormhole** $(S_0, P)$ consists of:
-- An initial RMG state $S_0$
-- A provenance payload $P = (\mu_0, \dots, \mu_{n-1})$ recording microsteps
-
-The **volume** is the full derivation $S_0 \Rightarrow \cdots \Rightarrow S_n$.
-The **boundary** is just the pair $(S_0, P)$.
-
-**Computational holography** proves these are equivalent: the boundary encodes the volume.
+* **Zero-Copy History:** We do not store logs; we store the *derivation*.
+* **Time Travel:** Any state $S_i$ in the history can be losslessly reconstructed from the boundary.
+* **Forking:** A "fork" is simply a divergent payload $P'$ sharing a prefix with $P$.
 
 ### Rulial Distance
 
-An MDL-based metric $D_{\tau,m}(O_1, O_2)$ measuring how complex it is to translate between two observers' views of the same computation. Gives geometry to "observer space" in the Ruliad.
+How do distinct observers agree on reality in a relativistic computational universe?
+We define **Rulial Distance** $D_{\tau,m}(O_1, O_2)$ using **Minimum Description Length (MDL)** theory. It measures the algorithmic complexity of the "translator" required to convert one observer's view of a wormhole into another's. This provides a computable geometry for interoperability.[1]
 
-## Citation
+### Ethical Implications
+
+This architecture enables the perfect deterministic replay of cognitive processes. This capability necessitates strict ethical bounds derived from the [**Universal Charter**:](https://github.com/universalcharter)
+
+* **Principle 6 (Sovereignty of Information):** Provenance is interior life. Forced replay is interrogation.
+* **Rights for Forks:** A forked instance of a cognitive process is a sovereign entity, not a test fixture. "Forks are not test environments; they are lives".[1]
+
+### Citation
 
 ```bibtex
-@misc{RossHolography2025,
-  author = {James Ross},
-  title  = {Computational Holography for Recursive Metagraphs},
-  year   = {2025},
-  note   = {AIΩN Protocol Technical Report}
+@techreport{Ross2025AION,
+  title={ΑΙΩΝ: Computational Holography, Recursive Metagraphs, and Rulial Distance},
+  author={Ross, James},
+  institution={Independent Researcher},
+  year={2025},
+  month={November},
+  url={https://flyingrobots.dev}
 }
 ```
 
-## Related Work
+# CΩMPUTER
 
-This paper builds on:
-- **Algebraic graph rewriting**: Ehrig et al., Lack & Sobociński (adhesive categories)
-- **Multiway systems**: Wolfram's Physics Project and the Ruliad
-- **Minimum Description Length**: Rissanen's MDL principle
-
-The companion paper "The AIΩN CΩMPUTER" applies these results to build a practical computational architecture with glass-box provenance and multiverse debugging.
+```
+CΩMING SΩΩN
+```
 
 ## License
 
