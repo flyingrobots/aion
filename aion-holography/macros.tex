@@ -14,18 +14,21 @@
 \newcommand{\Hist}{\mathrm{Hist}}
 
 % Inline project names (math-safe)
-\newcommand{\AION}{\textrm{AI}\ensuremath{\Omega}\textrm{N}}
-\newcommand{\COMPUTER}{\textrm{C}\ensuremath{\Omega}\textrm{MPUTER}}
-\providecommand{\AIONWordmarkSerif}{\textrm{AION}}
-\providecommand{\AIONInline}{\textrm{AION}}
-\providecommand{\AIONSignature}[1][1]{\AIONWordmarkSerif}
-\newcommand{\PaperDate}{\today}
+\newcommand{\AION}{\text{AI}\textOmega\text{N}}
+\newcommand{\COMPUTER}{\text{C}\textOmega\text{MPUTER}}
+\newcommand{\AIONWordmarkSerif}{\textrm{AION}}
+\newcommand{\AIONInline}{\textrm{AION}}
+\newcommand{\AIONSignature}[1][1]{\AIONWordmarkSerif}
 \newcommand{\AIONProjectURL}{\url{https://flyingrobots.dev}}
+\newcommand{\FULL}{\textbf{FULL}}
+\newcommand{\ZK}{\textbf{ZK}}
+\newcommand{\OPAQUE}{\textbf{OPAQUE}}
 
 % ==========================================
 %  Rewrite / Footprint helpers
 % ==========================================
-\newcommand{\Rewrite}{\Rightarrow}
+% We use \rightsquigarrow to denote rewrite steps.
+\newcommand{\Rewrite}{\rightsquigarrow}
 \newcommand{\To}{\rightarrow}
 \newcommand{\mono}{\hookrightarrow}
 
@@ -65,15 +68,25 @@
 
 % ---------------------------------------------------------
 % AION LOGO (circle + diamond + square)
+% Numeric values tuned for the current wordmark size; see comments below.
 % ---------------------------------------------------------
-\newcommand{\AIONLogo}[1][1]{%
-\begin{tikzpicture}[scale=#1, baseline=-0.55ex, line cap=round, line join=round]
-    \def\R{1.05}
-    \def\s{0.55}
-    \def\lwOuter{0.52pt}
-    \def\lwInner{0.32pt}
-    \def\dot{0.07}
+\pgfkeys{/aionlogo/.cd,
+  scale/.store in=\aionlogoScale, scale=1,
+  radius/.store in=\aionlogoRadius, radius=1.05,
+  square/.store in=\aionlogoSquare, square=0.55,
+  outerwidth/.store in=\aionlogoOuterWidth, outerwidth=0.52pt,
+  innerwidth/.store in=\aionlogoInnerWidth, innerwidth=0.32pt
+}
 
+\newcommand{\AIONLogo}[1][1]{%
+  \pgfkeys{/aionlogo,scale=#1}%
+  \begin{tikzpicture}[
+      scale=\aionlogoScale,
+      baseline=-0.55ex,% aligns with the wordmark baseline
+      line cap=round,
+      line join=round]
+    \pgfmathsetmacro{\R}{\aionlogoRadius}
+    \pgfmathsetmacro{\s}{\aionlogoSquare}
     \path (0,\R) coordinate (N)
           (0,-\R) coordinate (S)
           (\R,0) coordinate (E)
@@ -83,23 +96,22 @@
           (\s,-\s) coordinate (SE)
           (-\s,-\s) coordinate (SW);
 
-    \draw[line width=\lwOuter] (0,0) circle (\R);
-    \draw[line width=\lwInner] (N) -- (E) -- (S) -- (W) -- cycle;
-    \draw[line width=\lwInner] (NW) rectangle (SE);
-
-    \draw[line width=\lwInner] (N) -- (NE);
-    \draw[line width=\lwInner] (N) -- (NW);
-    \draw[line width=\lwInner] (S) -- (SE);
-    \draw[line width=\lwInner] (S) -- (SW);
-    \draw[line width=\lwInner] (E) -- (NE);
-    \draw[line width=\lwInner] (E) -- (SE);
-    \draw[line width=\lwInner] (W) -- (NW);
-    \draw[line width=\lwInner] (W) -- (SW);
-
-    % no node dots
-\end{tikzpicture}%
+    \draw[line width=\aionlogoOuterWidth] (0,0) circle (\R);
+    \draw[line width=\aionlogoInnerWidth] (N) -- (E) -- (S) -- (W) -- cycle;
+    \draw[line width=\aionlogoInnerWidth] (NW) rectangle (SE);
+    \draw[line width=\aionlogoInnerWidth] (N) -- (NE);
+    \draw[line width=\aionlogoInnerWidth] (N) -- (NW);
+    \draw[line width=\aionlogoInnerWidth] (S) -- (SE);
+    \draw[line width=\aionlogoInnerWidth] (S) -- (SW);
+    \draw[line width=\aionlogoInnerWidth] (E) -- (NE);
+    \draw[line width=\aionlogoInnerWidth] (E) -- (SE);
+    \draw[line width=\aionlogoInnerWidth] (W) -- (NW);
+    \draw[line width=\aionlogoInnerWidth] (W) -- (SW);
+    % Node dots intentionally omitted to keep the emblem minimal.
+  \end{tikzpicture}%
 }
 
 \renewcommand{\AIONSignature}[1][0.28]{%
+  % Raise/kerning values tuned for optical alignment with the wordmark.
   \raisebox{0.02em}{\smash{\AIONLogo[#1]}}\kern0.65em{\AIONWordmarkSerif}%
 }
