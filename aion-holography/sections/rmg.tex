@@ -59,9 +59,10 @@ action on atoms and on decorated skeletons.
 \begin{definition}[RMG morphism]
 We define morphisms by structural recursion on RMG depth.  First form the
 discrete category $\mathbf{P}$ with $\mathrm{Ob}(\mathbf{P}) = P$ and
-$\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  Thus
+$\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  We declare the
+RMG hom-sets on atoms by
 \[
-  \Hom(\mathrm{Atom}(p),\mathrm{Atom}(p')) =
+  \Hom_{\RMG}(\mathrm{Atom}(p),\mathrm{Atom}(p')) =
   \begin{cases}
     \{\id_{\mathrm{Atom}(p)}\} & \text{if } p = p',\\
     \emptyset          & \text{otherwise.}

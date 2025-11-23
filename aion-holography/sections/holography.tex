@@ -36,14 +36,15 @@ and we omit the routine details.  For a finite derivation
   \Rewrite^{\mu_{n-1}} S_n,
 \]
 each microstep reads values in some $S_j$ and produces new values in
-the strictly later state $S_{j+1}$, so every provenance edge in
-$\mathcal{D}(v)$ points from a value in $S_j$ to a value in $S_{j'}$
-with $j' > j$.  Immutability ensures that values are never updated
-in-place, only created at later ticks.  Since each RMG state $S_j$ is
-finite and there are only $n+1$ such states along the derivation,
-$\mathcal{D}(v)$ has finitely many nodes; and because tick indices
-strictly increase along edges, every causal chain leading to $v$ has
-length at most $n$, so $\mathcal{D}(v)$ is a finite acyclic graph.
+the immediately later state $S_{j+1}$, so every provenance edge in
+$\mathcal{D}(v)$ points from a value in $S_j$ to a value in $S_{j+1}$
+(hence tick indices strictly increase along edges).  Immutability
+ensures that values are never updated in-place, only created at later
+ticks.  Since each RMG state $S_j$ is finite and there are only $n+1$
+such states along the derivation, $\mathcal{D}(v)$ has finitely many
+nodes; and because tick indices strictly increase along edges, every
+causal chain leading to $v$ has length at most $n$, so $\mathcal{D}(v)$
+is a finite acyclic graph.
 
 \subsection{AION state packets as an instance}
 
