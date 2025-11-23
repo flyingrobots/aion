@@ -35,7 +35,7 @@ and we omit the routine details.  For a finite derivation
   S_0 \Rewrite^{\mu_0} S_1 \Rewrite^{\mu_1} \cdots
   \Rewrite^{\mu_{n-1}} S_n,
 \]
-each microstep consumes values in some $S_j$ and produces new values in
+each microstep reads values in some $S_j$ and produces new values in
 the strictly later state $S_{j+1}$, so every provenance edge in
 $\mathcal{D}(v)$ points from a value in $S_j$ to a value in $S_{j'}$
 with $j' > j$.  Immutability ensures that values are never updated
@@ -177,7 +177,7 @@ by the recursion
 for $0 \le i < n$, where $\Apply$ executes the unique microstep
 described by~$\mu_i$ under the deterministic tick semantics.
 Determinism ensures that each $S_{i+1}$ is uniquely determined (up to
-isomorphism), while tick-level confluence
+isomorphism).  Furthermore, tick-level confluence
 (Theorem~\ref{thm:tick-confluence}) guarantees that any internal
 interleaving of concurrent matches compatible with $\mu_i$ yields an
 isomorphic successor.
