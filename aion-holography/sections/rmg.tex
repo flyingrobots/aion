@@ -57,17 +57,31 @@ action on atoms and on decorated skeletons.
 \subsection{Morphisms and category of RMGs}
 
 \begin{definition}[RMG morphism]
-We define morphisms by structural recursion on RMG depth.  A morphism
+We define morphisms by structural recursion on RMG depth (the nesting level in
+the construction of Definition~\ref{def:rmg}).  First form the
+discrete category $\mathbf{P}$ with $\mathrm{Ob}(\mathbf{P}) = P$ and
+$\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  We define the
+RMG hom-sets on atoms to match this discrete structure:
+\[
+  \Hom_{\RMG}(\mathrm{Atom}(p),\mathrm{Atom}(p')) =
+  \begin{cases}
+    \{\id_{\mathrm{Atom}(p)}\} & \text{if } p = p',\\
+    \emptyset          & \text{otherwise.}
+  \end{cases}
+\]
+This embedding is faithful because it preserves the identity-only structure of
+$\mathbf{P}$.
+For composite objects, a morphism
 $f : (S,\alpha,\beta) \To (S',\alpha',\beta')$ consists of:
 \begin{itemize}[leftmargin=*]
   \item a graph homomorphism of skeletons $f_V : V \To V'$, $f_E : E \To
     E'$ preserving sources and targets; and
   \item for each $v \in V$ a morphism of attachments
     $f_v : \alpha(v) \To \alpha'(f_V(v))$ and, for each $e \in E$, a
-    morphism $f_e : \beta(e) \To \beta'(f_E(e))$, defined recursively
-    using the same clause whenever an attachment is itself of the form
-    $(S,\alpha,\beta)$.
+    morphism $f_e : \beta(e) \To \beta'(f_E(e))$.
 \end{itemize}
+Note that each $f_v$ and $f_e$ is itself an RMG morphism, so this definition
+proceeds by the structural recursion announced above.
 Composition and identities are defined componentwise.
 \end{definition}
 \begin{figure}[t]
@@ -147,7 +161,7 @@ For convenience, we collect the main notation introduced so far:
 \toprule
 \textbf{Symbol} & \textbf{Meaning} \\
 \midrule
-$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state (one object in a universe $\mathcal{U}$) \\
+$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state in universe $U$ \\
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ & DPOI rule \\
 $\mu_i$ & microstep label \\
 $P = (\mu_0,\dots,\mu_{n-1})$ & provenance payload \\
@@ -160,5 +174,10 @@ $\Recon(S_0,P)$ & reconstruction procedure \\
 \end{center}
 \medskip
 
+Throughout, an \emph{RMG universe} $U$ is a set of RMG states (typically closed
+under the rewrite rules $R$ under consideration), and $\mathcal{U} \in U$
+denotes a particular state in that universe.
+
 Subsequent sections introduce $D_{\tau,m}$ (rulial distance),
-$\Hist(U,R)$ (history category), and other observer-related notation.
+$\Hist(U,R)$ (history category on the universe $U$ of RMG states), and
+other observer-related notation.
