@@ -60,8 +60,8 @@ action on atoms and on decorated skeletons.
 We define morphisms by structural recursion on RMG depth (the nesting level in
 the construction of Definition~\ref{def:rmg}).  First form the
 discrete category $\mathbf{P}$ with $\mathrm{Ob}(\mathbf{P}) = P$ and
-$\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  We declare the
-RMG hom-sets on atoms by
+$\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  We define the
+RMG hom-sets on atoms to match this discrete structure:
 \[
   \Hom_{\RMG}(\mathrm{Atom}(p),\mathrm{Atom}(p')) =
   \begin{cases}
@@ -69,8 +69,8 @@ RMG hom-sets on atoms by
     \emptyset          & \text{otherwise.}
   \end{cases}
 \]
-Under this construction the embedding $\mathrm{Atom} : \mathbf{P} \To \RMG$ is
-a faithful functor.
+This embedding is faithful because it preserves the identity-only structure of
+$\mathbf{P}$.
 For composite objects, a morphism
 $f : (S,\alpha,\beta) \To (S',\alpha',\beta')$ consists of:
 \begin{itemize}[leftmargin=*]
@@ -160,7 +160,7 @@ For convenience, we collect the main notation introduced so far:
 \toprule
 \textbf{Symbol} & \textbf{Meaning} \\
 \midrule
-$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state with $\mathcal{U} \in U$, where an RMG universe $U$ is a collection of RMG states related by rewriting \\
+$\mathcal{U} = (G;\alpha,\beta)$ & single RMG state in universe $U$ \\
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ & DPOI rule \\
 $\mu_i$ & microstep label \\
 $P = (\mu_0,\dots,\mu_{n-1})$ & provenance payload \\
