@@ -57,7 +57,8 @@ action on atoms and on decorated skeletons.
 \subsection{Morphisms and category of RMGs}
 
 \begin{definition}[RMG morphism]
-We define morphisms by structural recursion on RMG depth.  First form the
+We define morphisms by structural recursion on RMG depth (the nesting level in
+the construction of Definition~\ref{def:rmg}).  First form the
 discrete category $\mathbf{P}$ with $\mathrm{Ob}(\mathbf{P}) = P$ and
 $\mathrm{Mor}(\mathbf{P})$ containing only identity morphisms.  We declare the
 RMG hom-sets on atoms by
@@ -78,9 +79,7 @@ $f : (S,\alpha,\beta) \To (S',\alpha',\beta')$ consists of:
   \item for each $v \in V$ a morphism of attachments
     $f_v : \alpha(v) \To \alpha'(f_V(v))$ and, for each $e \in E$, a
     morphism $f_e : \beta(e) \To \beta'(f_E(e))$, where each $f_v$ and
-    $f_e$ is itself an RMG morphism, defined by structural recursion on
-    RMG depth (i.e.\ the nesting level in the construction of
-    Definition~\ref{def:rmg}).
+    $f_e$ is itself an RMG morphism.
 \end{itemize}
 Composition and identities are defined componentwise.
 \end{definition}
