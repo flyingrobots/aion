@@ -14,7 +14,7 @@ states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
 We work at the level of the skeleton plane.  Write $G_S$ for the
 skeleton component of $G$, and likewise $L_S$, $K_S$, $R_S$ for the
 underlying skeleton graphs of a rule.  Let
-$\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
+$U = (G;\alpha,\beta)$ be an RMG state and let
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ be a DPOI rule.  A
 \emph{skeleton match} is a mono $m_S : L_S \hookrightarrow G_S$ in
 $\OGraph_T$ satisfying the usual gluing conditions.
@@ -52,7 +52,7 @@ $\OGraph_T$ satisfying the usual gluing conditions.
 \subsubsection{Scheduler--admissible batches}
 
 \begin{definition}[Scheduler--admissible batch]\label{def:batch}
-  Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state.  A finite
+  Let $U = (G;\alpha,\beta)$ be an RMG state.  A finite
   family of skeleton matches
   $B = \{m_{i,S} : L_{i,S} \to G_S\}_{i\in I}$ is
   \emph{scheduler--admissible} if the matches are pairwise
@@ -85,7 +85,7 @@ sense of \cref{def:batch}, using a safe over-approximation of
 $\Use\cup\Del$; we do not repeat the implementation details here.
 
 \begin{theorem}[Skeleton-plane tick confluence]\label{thm:tick-confluence}
-  Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
+  Let $U = (G;\alpha,\beta)$ be an RMG state and let
   $B = \{m_{i,S} : L_{i,S} \hookrightarrow G_S\}_{i\in I}$ be a
   scheduler--admissible batch for a family of DPOI rules.  Then any
   two sequentialisations of the corresponding DPOI steps yield
@@ -183,7 +183,7 @@ $\pi^{-1}(G)$; a \emph{skeleton step} is a DPOI step in the base
 $\OGraph_T$.  Both are built from pushouts along monos.
 
 \begin{definition}[No-delete/no-clone-under-descent]\label{def:no-delete}
-  Consider a tick on an RMG state $\mathcal{U} = (G;\alpha,\beta)$
+Consider a tick on an RMG state $U = (G;\alpha,\beta)$
   consisting of
   \begin{enumerate}[leftmargin=*]
     \item a family of attachment--plane DPOI steps, each acting inside
@@ -216,8 +216,8 @@ $\OGraph_T$.  Both are built from pushouts along monos.
 \begin{theorem}[Two-plane commutation]\label{thm:two-plane}
 Let $R$ be a rule pack satisfying the no-delete/no-clone-under-descent
 invariant of \cref{def:no-delete}.  Let
-$\mathcal{U} = (G;\alpha,\beta)$ be an RMG state generated from $R$.
-Let $A : \mathcal{U} \Rewrite \mathcal{U}_A$ be a finite composite of
+$U = (G;\alpha,\beta)$ be an RMG state generated from $R$.
+Let $A : U \Rewrite U_A$ be a finite composite of
 attachment steps in the fiber over $G$, and let
 $S : G \Rewrite G'$ be the skeleton DPOI step induced by the same tick
 such that the tick consisting of $A$ followed by $S$ satisfies the

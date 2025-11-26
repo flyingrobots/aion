@@ -8,11 +8,12 @@ geometry on different descriptions of the same underlying RMG universe.
 
 \subsection{Observers as functors}
 
-Fix an RMG universe $(U,R)$ and its history category
-$\Hist(U,R)$ whose objects are states and whose morphisms are derivation
-paths between them.  An \emph{observer} is a functor
+Fix an RMG universe $\mathcal{U}$ together with a rule pack $R$ and its
+history category $\Hist(\mathcal{U},R)$ whose objects are states
+$U,V \in \mathcal{U}$ and whose morphisms are derivation paths between
+them.  An \emph{observer} is a functor
 \[
-  O : \Hist(U,R) \To \mathcal{Y},
+  O : \Hist(\mathcal{U},R) \To \mathcal{Y},
 \]
 where $\mathcal{Y}$ is a suitable category of observations (symbol
 streams, trace graphs, etc.).  We assume that $O$ is realised by some
@@ -36,7 +37,7 @@ construction
   T_{12} : O_1 \Rightarrow O_2
 \]
 realised as a small DPOI transducer: for each history
-$h \in \Hist(U,R)$ it maps the trace $O_1(h)$ to a trace
+$h \in \Hist(\mathcal{U},R)$ it maps the trace $O_1(h)$ to a trace
 $T_{12}(O_1(h))$ in the observation category~$\mathcal{Y}$.  Likewise
 we consider translators $T_{21} : O_2 \Rightarrow O_1$.
 
@@ -63,10 +64,10 @@ translator $T$ (its MDL cost).  Let
 be a metric on individual traces (for example, an $L_1$ distance on
 symbol streams or an edit distance on labelled paths).  We lift this
 pointwise to observers
-by defining, for observers $O,O' : \Hist(U,R) \to \mathcal{Y}$,
+by defining, for observers $O,O' : \Hist(\mathcal{U},R) \to \mathcal{Y}$,
 \[
   \mathrm{Dist}(O,O')
-  := \sup_{h \in \Hist(U,R)}
+  := \sup_{h \in \Hist(\mathcal{U},R)}
        \mathrm{dist}_{\mathrm{tr}}\bigl(O(h),O'(h)\bigr).
 \]
 We assume all observers considered produce traces in a common metric
@@ -106,11 +107,11 @@ We then define the budgeted MDL-based distance
       \Bigr).
 \]
 
-\begin{lemma}[Basic properties of $D_{\tau,m}$]\label{lem:rulial-basic}
+\begin{theorem}[Basic properties of $D_{\tau,m}$]\label{thm:rulial-basic}
 For all observers $O_1,O_2$ and budgets $(\tau,m)$, the distance
 $D_{\tau,m}(O_1,O_2)$ is nonnegative and symmetric, and
 $D_{\tau,m}(O,O)=0$ for every observer $O$.
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
 Nonnegativity and symmetry are immediate from the definition of
@@ -123,7 +124,7 @@ $(I_O,I_O)$ is zero.  Hence $D_{\tau,m}(O,O)\le 0$, and
 nonnegativity implies $D_{\tau,m}(O,O)=0$.
 \end{proof}
 
-\begin{theorem}[Triangle inequality for rulial distance]\label{thm:rulial-triangle}
+\begin{theorem}[Main theorem on rulial distance (triangle inequality)]\label{thm:rulial-triangle}
 Assume:
 \begin{enumerate}[leftmargin=*]
   \item the description length $\mathrm{DL}$ is based on a prefix code
@@ -146,7 +147,7 @@ constant:
   D_{\tau,m}(O_1,O_3)
   \le D_{\tau,m}(O_1,O_2) + D_{\tau,m}(O_2,O_3) + 2c.
 \]
-In particular, together with \cref{lem:rulial-basic} this makes
+In particular, together with \cref{thm:rulial-basic} this makes
 $D_{\tau,m}$ a quasi-pseudometric (a pseudometric up to additive slack
 $2c$) on observers.
 \end{theorem}
