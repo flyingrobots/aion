@@ -26,9 +26,9 @@ under the following constructors:
 We write an element of $\RMG$ as either an atom or as a ``1-skeleton''
 graph decorated by attachments on vertices and edges.  Attachments
 themselves may be recursive metagraphs, so this attachment structure
-can nest arbitrarily deeply.  This definition agrees with the
-set-theoretic and initial-algebra presentation developed in previous
-technical notes.
+can nest arbitrarily deeply.  This definition matches the
+set-theoretic and initial-algebra presentation used in our internal
+design notes.
 
 \paragraph{Example (A tiny recursive metagraph).}
 As a concrete instance, consider a program call graph where each
@@ -53,6 +53,19 @@ Then $\RMG$ is (up to isomorphism) the carrier of the initial
 $F$-algebra.  This yields the usual structural recursion and induction
 principles: every function out of $\RMG$ is uniquely determined by its
 action on atoms and on decorated skeletons.
+
+\subsection{Unfoldings and recursion schemes}
+
+The depth of an RMG $X$ is the length of the longest attachment chain
+in $X$; finite depth follows from the inductive definition.  For
+$k\in\mathbb{N}$, the \emph{$k$-unfolding} of $X$, written $\mathrm{unf}_k(X)$,
+replaces each attachment below depth $k$ by an opaque atom while leaving
+shallower structure intact.  The \emph{infinite unfolding}
+$\mathrm{unf}_\infty(X)$ is the direct limit of the $k$-unfoldings; it is a
+possibly infinite tree that still admits the same structural recursion
+principles because $\RMG$ is initial for $F$.  These unfoldings let us
+reason about recursion schemes (catamorphisms, anamorphisms) over RMGs
+without leaving the typed open-graph setting.
 
 \subsection{Morphisms and category of RMGs}
 
