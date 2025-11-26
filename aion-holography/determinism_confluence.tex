@@ -95,7 +95,7 @@ $\OGraph_T$ satisfying the usual gluing conditions.
   family of skeleton matches
   $B = \{m_{i,S} : L_{i,S} \to G_S\}_{i\in I}$ is
   \emph{scheduler--admissible} if the matches are pairwise
-  independent in the sense of \cref{def:independence}, i.e.
+  independent in the sense of Definition~\ref{def:independence}, i.e.
   \[
     \Del(m_{i,S}) \cap \Use(m_{j,S}) = \emptyset
     \quad\text{for all distinct } i,j\in I.
@@ -112,7 +112,7 @@ $m : L \hookrightarrow G$ satisfying the usual gluing conditions
 given by the standard double square (pushout complement + pushout).
 
 We work with RMG states and tick semantics as defined in
-\cref{def:rmg-state,def:rmg-tick}.  In this section we analyse when
+Definitions~\ref{def:rmg-state} and~\ref{def:rmg-tick}.  In this section we analyse when
 batches of matches can be scheduled concurrently without affecting the
 resulting state.  The deterministic properties proved here apply
 uniformly to all derivations; applying them to cognitive systems
@@ -120,7 +120,7 @@ introduces additional ethical structure developed in
 \cref{sec:ethics}.
 
 The scheduler computes a maximal independent set of matches in the
-sense of \cref{def:batch}, using a safe over-approximation of
+sense of Definition~\ref{def:batch}, using a safe over-approximation of
 $\Use\cup\Del$; we do not repeat the implementation details here.
 
 \begin{theorem}[Skeleton-plane tick confluence]\label{thm:tick-confluence}
@@ -254,7 +254,7 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
 
 \begin{theorem}[Two-plane commutation]\label{thm:two-plane}
 Let $R$ be a rule pack satisfying the no-delete/no-clone-under-descent
-invariant of \cref{def:no-delete}.  Let
+invariant of Definition~\ref{def:no-delete}.  Let
 $U = (G;\alpha,\beta)$ be an RMG state generated from $R$.
 Let $A : U \Rewrite U_A$ be a finite composite of
 attachment steps in the fiber over $G$, and let
