@@ -49,6 +49,48 @@ $\OGraph_T$ satisfying the usual gluing conditions.
   written by the other.
 \end{definition}
 
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}[
+      node/.style={circle,draw=gray!60,fill=gray!10,thick,minimum size=8mm},
+      del/.style={fill=red!25},
+      use/.style={fill=blue!20},
+      edge/.style={-Latex,thick,gray!60},
+      >=Latex
+    ]
+    % baseline graph
+    \node[node] (a) at (0,0) {$a$};
+    \node[node,del] (b) at (1.6,0.7) {$b$};
+    \node[node,use] (c) at (3.2,0) {$c$};
+    \node[node] (d) at (1.6,-0.8) {$d$};
+    \draw[edge] (a) -- (b);
+    \draw[edge] (b) -- (c);
+    \draw[edge] (a) -- (d);
+    \draw[edge] (d) -- (c);
+
+    % match 1
+    \draw[rounded corners,thick,teal!70]
+      ( -0.4, -0.4) rectangle (2.3,1.1);
+    \node[anchor=west,teal!70!black] at (2.35,1.05) {$m_1$};
+
+    % match 2
+    \draw[rounded corners,thick,orange!80]
+      (1.0,-1.1) rectangle (3.6,0.9);
+    \node[anchor=west,orange!80!black] at (3.65,0.85) {$m_2$};
+
+    % legend
+    \node[node,del] (ld) at (0.2,-1.6) {};
+    \node[anchor=west] at (0.45,-1.6) {delete set $\Del(m_i)$};
+    \node[node,use] (lu) at (2.2,-1.6) {};
+    \node[anchor=west] at (2.45,-1.6) {use set $\Use(m_i)$};
+  \end{tikzpicture}
+  \caption{Two overlapping matches on the skeleton plane.  Shaded nodes
+  illustrate $\Del$ (red) and $\Use$ (blue).  Independence requires
+  $\Del(m_1)\cap\Use(m_2)=\Del(m_2)\cap\Use(m_1)=\emptyset$, ruling out
+  destructive interference between the batches.}
+  \label{fig:footprint}
+\end{figure}
+
 \subsubsection{Scheduler--admissible batches}
 
 \begin{definition}[Scheduler--admissible batch]\label{def:batch}
