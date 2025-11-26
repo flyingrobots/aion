@@ -239,14 +239,15 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
       If a skeleton vertex or edge $x\in G_S$ is deleted by the
       skeleton step (i.e.\ $x \in \Del(m_S)$), then the fibre over $x$
       is empty before the tick: no object in any attachment graph has
-      $x$ as its skeleton ancestor.
+      $x$ as its skeleton ancestor, i.e.\ lies in the finite tree of
+      attachments rooted at the fibre over $x$.
     \item[(NC)] (\emph{No clone under descent.})
       The skeleton step does not implicitly duplicate attachment state:
       whenever a skeleton vertex or edge $x\in G_S$ is preserved and
-      mapped to $x'\in G_S'$, the attachment over $x'$ is obtained from
-      the attachment over $x$ solely by the attachment--plane DPOI
-      steps in the same tick.  In particular, no attachment object is
-      copied to multiple descendants of $x$.
+      mapped to $x'\in G_S'$, the attachment over $x'$ is (up to
+      isomorphism) obtained from the attachment over $x$ solely by the
+      attachment--plane DPOI steps in the same tick.  In particular,
+      no attachment object is copied to multiple descendants of $x$.
   \end{enumerate}
   A rule pack $R$ satisfies no-delete/no-clone-under-descent if every
   tick generated from $R$ has this property.
