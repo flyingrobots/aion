@@ -27,8 +27,7 @@ We write an element of $\RMG$ as either an atom or as a ``1-skeleton''
 graph decorated by attachments on vertices and edges.  Attachments
 themselves may be recursive metagraphs, so this attachment structure
 can nest arbitrarily deeply.  This definition matches the
-set-theoretic and initial-algebra presentation used in our internal
-design notes.
+set-theoretic and initial-algebra presentation.
 
 \paragraph{Example (A tiny recursive metagraph).}
 As a concrete instance, consider a program call graph where each
@@ -58,16 +57,21 @@ action on atoms and on decorated skeletons.
 
 The depth of an RMG $X$ is the length of the longest attachment chain
 in $X$; finite depth follows from the inductive definition.  For
-$k\in\mathbb{N}$, the \emph{$k$-unfolding} of $X$, written
+$k \in \mathbb{N}$, the \emph{$k$-unfolding} of $X$, written
 $\mathrm{unf}_k(X)$, replaces each attachment at depth $k$ or greater
 by an opaque atom while preserving all structure at depths
-$0,\ldots,k{-}1$.  The \emph{infinite unfolding}
+$0,\ldots,k{-}1$.  Each $\mathrm{unf}_k(X)$ is a finitely branching RMG
+obtained by structural recursion on depth.
+
+The \emph{infinite unfolding}
 $\mathrm{unf}_\infty(X)$ is the directed colimit of the
-$k$-unfoldings.  Because $F$ is finitary and $\RMG$ is the initial
-$F$-algebra, these colimits remain finitely branching and support the
-same structural recursion principles.  The unfoldings thus let us
-reason about recursion schemes (catamorphisms, anamorphisms) over RMGs
-without leaving the typed open-graph setting.
+$\mathrm{unf}_k(X)$ along the truncation maps
+$\mathrm{unf}_k(X) \to \mathrm{unf}_{k+1}(X)$ that agree on depths
+$0,\ldots,k{-}1$.  Every finite pattern lives in some finite unfolding,
+so reasoning about $X$ via recursion schemes (catamorphisms,
+anamorphisms) can be reduced to these finite approximants and then
+passed to the colimit.  We do not rely on any stronger universal
+property of $\mathrm{unf}_\infty(X)$ in this paper.
 
 \subsection{Morphisms and category of RMGs}
 

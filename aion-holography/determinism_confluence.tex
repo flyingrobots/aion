@@ -3,7 +3,7 @@
 \label{sec:determinism}
 
 Throughout this section we work under the standing assumptions
-summarised on page~\pageref{sec:assumptions}.
+summarised in \cref{sec:assumptions}.
 
 We sketch the concurrency discipline, define independence, and state the
 main confluence theorems for tick-level execution, working with RMG
@@ -78,13 +78,11 @@ $\OGraph_T$ satisfying the usual gluing conditions.
       (0.9,-1.7) rectangle (4.7,1.4);
     \node[anchor=west,orange!80!black] at (4.85,1.35) {$m_2$};
 
-    % legend
-    % legend in separate inset box below
   \end{tikzpicture}
   \caption{Two overlapping matches on the skeleton plane.  Shaded nodes
   illustrate $\Del$ (red) and $\Use$ (blue).  Independence requires
   $\Del(m_1)\cap\Use(m_2)=\Del(m_2)\cap\Use(m_1)=\emptyset$, ruling out
-  destructive interference between the batches.}
+  destructive interference between the matches.}
   \label{fig:footprint}
 \end{figure}
 
@@ -101,6 +99,8 @@ $\OGraph_T$ satisfying the usual gluing conditions.
     \quad\text{for all distinct } i,j\in I.
   \]
 \end{definition}
+Admissibility only requires pairwise independence; in practice the
+scheduler selects a \emph{maximal} independent subset each tick.
 
 \subsection{Tick semantics and scheduler confluence}
 
@@ -113,31 +113,31 @@ given by the standard double square (pushout complement + pushout).
 
 We work with RMG states and tick semantics as defined in
 Definitions~\ref{def:rmg-state} and~\ref{def:rmg-tick}.  In this section we analyse when
-batches of matches can be scheduled concurrently without affecting the
+sets of matches can be scheduled concurrently without affecting the
 resulting state.  The deterministic properties proved here apply
 uniformly to all derivations; applying them to cognitive systems
 introduces additional ethical structure developed in
 \cref{sec:ethics}.
 
-The scheduler computes a maximal independent set of matches in the
-sense of Definition~\ref{def:batch}, using a safe over-approximation of
-$\Use\cup\Del$; we do not repeat the implementation details here.
+Each tick, the scheduler computes a maximal independent set of matches
+from the scheduler--admissible (pairwise independent) matches, using a
+safe over-approximation of $\Use\cup\Del$; we do not repeat the
+implementation details here.
 
 \begin{theorem}[Skeleton-plane tick confluence]\label{thm:tick-confluence}
   Let $U = (G;\alpha,\beta)$ be an RMG state and let
   $B = \{m_{i,S} : L_{i,S} \hookrightarrow G_S\}_{i\in I}$ be a
-  scheduler--admissible batch for a family of DPOI rules.  Then any
-  two sequentialisations of the corresponding DPOI steps yield
-  isomorphic successor states.
+  scheduler--admissible batch for a family of DPOI rules (not
+  necessarily maximal).  Then any two sequentialisations of the
+  corresponding DPOI steps yield isomorphic successor states.
 \end{theorem}
 
 \begin{proof}
-By scheduler--admissibility, the skeleton matches
-$\{m_{i,S} : L_{i,S} \hookrightarrow G_S\}$ are pairwise independent in
-the sense of \cref{def:independence}.  By the Concurrency / Parallel
-Independence Theorem for DPO rewriting in adhesive categories
-(see, e.g.,~\cite{EEPT06}; similar categorical techniques appear in the
-space--time reversible graph-rewriting setting of~\cite{Arrighi2025Reversible}),
+By scheduler--admissibility (pairwise independence), the skeleton matches
+$\{m_{i,S} : L_{i,S} \hookrightarrow G_S\}$ are independent in
+the sense of \cref{def:independence}.  By the Parallel Independence
+Theorem for DPO rewriting in adhesive categories
+\cite[Thm.~5.4]{EEPT06} (see also \cite[Sec.~4]{Arrighi2025Reversible}),
 parallel independent steps commute: for
 any $i \neq j$ we have a diagram
 \[
@@ -232,6 +232,10 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
       $G_S \Rewrite_S G_S'$ induced by a rule and match
       $m_S : L_S \to G_S$.
   \end{enumerate}
+  We say that an object $y$ in an attachment graph has
+  \emph{skeleton ancestor} $x \in G_S$ if it lies in the finite tree of
+  attachments rooted at the fibre over $x$, following the recursive
+  attachment structure of \cref{sec:rmg}.
   We say that this tick satisfies \emph{no-delete/no-clone-under-descent}
   if:
   \begin{enumerate}[leftmargin=*]
@@ -243,10 +247,10 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
     \item[(NC)] (\emph{No clone under descent.})
       The skeleton step does not implicitly duplicate attachment state:
       whenever a skeleton vertex or edge $x\in G_S$ is preserved and
-      mapped to $x'\in G_S'$, the attachment over $x'$ is obtained from
-      the attachment over $x$ solely by the attachment--plane DPOI
-      steps in the same tick.  In particular, no attachment object is
-      copied to multiple descendants of $x$.
+      mapped to $x'\in G_S'$, the attachment over $x'$ is (up to
+      isomorphism) obtained from the attachment over $x$ solely by the
+      attachment--plane DPOI steps in the same tick.  In particular,
+      no attachment object is copied to multiple descendants of $x$.
   \end{enumerate}
   A rule pack $R$ satisfies no-delete/no-clone-under-descent if every
   tick generated from $R$ has this property.
@@ -258,9 +262,8 @@ invariant of Definition~\ref{def:no-delete}.  Let
 $U = (G;\alpha,\beta)$ be an RMG state generated from $R$.
 Let $A : U \Rewrite U_A$ be a finite composite of
 attachment steps in the fiber over $G$, and let
-$S : G \Rewrite G'$ be the skeleton DPOI step induced by the same tick
-such that the tick consisting of $A$ followed by $S$ satisfies the
-no-delete/no-clone-under-descent invariant.  Then
+$S : G \Rewrite G'$ be the skeleton DPOI step induced by the same tick.
+Then
 there exists an attachment composite
 $A' : (G';\alpha',\beta') \Rightarrow (G';\alpha'',\beta'')$ in the
 fiber over $G'$ such that the following square in $\RMGState$ commutes
@@ -375,7 +378,9 @@ Then the rewrite relation is confluent.
 This theorem applies directly to the skeleton plane; together with the
 no-delete/no-clone-under-descent invariant and two-plane commutation,
 it yields uniqueness of \emph{worldlines} at the level of RMG states
-for rule packs satisfying these termination / critical-pair conditions.
+for rule packs satisfying the hypotheses of \cref{thm:global} (the
+no-delete/no-clone-under-descent invariant plus termination and
+joinability of critical pairs).
 
 Under the hypotheses of the global confluence theorem, any two complete
 derivations from a fixed initial state are joinable and yield
