@@ -1,4 +1,6 @@
 name: Release Paper PDF
+permissions:
+  contents: write  # needed to create releases; keep minimal scope
 
 on:
   push:
