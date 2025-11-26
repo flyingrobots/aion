@@ -15,16 +15,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Find PDF
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: aion-holography
+          root_file: main.tex
+          latexmk_use_xelatex: false
+          args: -pdf -interaction=nonstopmode -halt-on-error
+
+      - name: Set PDF path
         id: pdf
         run: |
-          # Adjust the filename here if needed
-          FILE_PATH=$(find . -maxdepth 3 -type f -iname "main.pdf")
-          if [ -z "$FILE_PATH" ]; then
-            echo "ERROR: Could not find main.pdf"
+          FILE_PATH="aion-holography/main.pdf"
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "ERROR: Could not find $FILE_PATH"
             exit 1
           fi
-          echo "path=$FILE_PATH" >> $GITHUB_OUTPUT
+          echo "path=$FILE_PATH" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         id: create_release
