@@ -21,8 +21,11 @@
 \providecommand{\AIONWordmarkSerif}{\textrm{AION}}
 \providecommand{\AIONInline}{\textrm{AION}}
 \providecommand{\AIONSignature}[1][1]{\AIONWordmarkSerif}
-% Freeze publication date to avoid changing on re-render
-\newcommand{\PaperDate}{November 25, 2025}
+\providecommand{\PaperVersion}{draft} % set to e.g. v1.0 for archival builds
+% Publication date: defaults to dynamic \today for ongoing edits.
+% For archival/release builds, override with a fixed date, e.g.
+% \renewcommand{\PaperDate}{November 25, 2025}
+\providecommand{\PaperDate}{\today}
 \newcommand{\AIONProjectURL}{\url{https://github.com/flyingrobots/aion}}
 
 % ==========================================

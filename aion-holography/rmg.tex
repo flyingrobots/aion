@@ -58,12 +58,14 @@ action on atoms and on decorated skeletons.
 
 The depth of an RMG $X$ is the length of the longest attachment chain
 in $X$; finite depth follows from the inductive definition.  For
-$k\in\mathbb{N}$, the \emph{$k$-unfolding} of $X$, written $\mathrm{unf}_k(X)$,
-replaces each attachment below depth $k$ by an opaque atom while leaving
-shallower structure intact.  The \emph{infinite unfolding}
-$\mathrm{unf}_\infty(X)$ is the direct limit of the $k$-unfoldings; it is a
-possibly infinite tree that still admits the same structural recursion
-principles because $\RMG$ is initial for $F$.  These unfoldings let us
+$k\in\mathbb{N}$, the \emph{$k$-unfolding} of $X$, written
+$\mathrm{unf}_k(X)$, replaces each attachment at depth $k$ or greater
+by an opaque atom while preserving all structure at depths
+$0,\ldots,k{-}1$.  The \emph{infinite unfolding}
+$\mathrm{unf}_\infty(X)$ is the directed colimit of the
+$k$-unfoldings.  Because $F$ is finitary and $\RMG$ is the initial
+$F$-algebra, these colimits remain finitely branching and support the
+same structural recursion principles.  The unfoldings thus let us
 reason about recursion schemes (catamorphisms, anamorphisms) over RMGs
 without leaving the typed open-graph setting.
 

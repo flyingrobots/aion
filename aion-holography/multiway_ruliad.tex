@@ -87,7 +87,8 @@ The class of all possible such worldlines, across all rule sets and
 inputs, forms a large multiway object akin to the Ruliad.  The rulial
 distance from \cref{sec:rulial} equips this space of observers with a
 geometry, and the Chronos, Kairos, Aion time model described below
-gives a temporal structure on branches and merges.
+(see \cref{subsec:chronos-kairos-aion}) gives a temporal structure on
+branches and merges.
 
 The RMG worldlines defined here thus embed naturally into the broader
 Ruliad framework.
@@ -96,13 +97,14 @@ A more detailed study of this correspondence is left for future work,
 and will be taken up in the companion \COMPUTER{} paper, where we
 explicitly model fork/merge operators and the Time Cone (Chronos,
 Kairos, Aion) at the level of operational semantics.  Intuitively, the
-Time Cone is the forward “light-cone” of computation: Chronos gives the
-linear worldline, Kairos marks branch points, and Aion is the surrounding
-space of possible RMG histories.
+Time Cone is the forward ``light-cone'' of computation: Chronos gives
+the linear worldline, Kairos marks branch points, and Aion is the
+surrounding space of possible RMG histories.
 
 \subsection{Chronos, Kairos, Aion: a three-layer time model}
+\label{subsec:chronos-kairos-aion}
 Chronos is the linear ordering of events inside a tick (ledger kernel).
 Kairos marks branch points such as schema changes, DPO conflicts, or
 rule-pack switches.  Aion is the total multiway possibility space
-$\Hist(\mathcal{U},R)$ ranging over all schedules, rule packs, and inputs,
+$\Hist(\mathcal{U}, R)$ ranging over all schedules, rule packs, and inputs,
 supporting multiverse debugging and counterfactual replay.

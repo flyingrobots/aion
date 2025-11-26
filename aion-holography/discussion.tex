@@ -9,6 +9,32 @@ encodes its entire interior evolution.  We have also outlined an
 MDL-based rulial geometry on observers and connected RMG rewriting to
 multiway systems.
 
+\subsection{Implementation guarantees (Echo)}
+
+In the concrete \AION{} runtime (Echo), the semantic assumptions above
+are enforced by operational determinism invariants; any violation aborts
+the tick deterministically and emits an error node for replay analysis.
+These invariants are also exercised by the test suite to guarantee
+bit-level reproducibility:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{World Equivalence:} identical diff sequences and merge
+    decisions yield identical world hashes.
+  \item \textbf{Merge Determinism:} given the same base snapshot, diffs,
+    and merge strategies, the resulting snapshot and diff hashes are
+    identical.
+  \item \textbf{Temporal Stability:} GC, compression, and inspector
+    activity do not alter logical state.
+  \item \textbf{Schema Consistency:} component layout hashes must match
+    before merges; mismatches block the merge.
+  \item \textbf{Causal Integrity:} writes cannot modify values they
+    transitively read earlier in Chronos; paradoxes are detected and
+    isolated.
+  \item \textbf{Entropy Reproducibility:} branch entropy is a
+    deterministic function of recorded events.
+  \item \textbf{Replay Integrity:} replaying from node $A$ to $B$
+    produces identical world hash, event order, and PRNG draw counts.
+\end{itemize}
+
 \subsection{Related work}
 
 Our work builds on several research traditions:
@@ -25,9 +51,9 @@ standard concurrency theorem for adhesive systems.
 Category-theoretic graph rewriting has also been applied to
 discretised space--time models in
 Arrighi--Costes--Maignan~\cite{Arrighi2025Reversible}, which uses DPO
-rewriting in an adhesive setting to obtain space--time deterministic
-and reversible graph dynamics.  Our use of the same machinery is
-conceptually similar, but we focus on deterministic multiway semantics
+rewriting in an adhesive setting to study space--time reversible graph
+rewriting.  Our use of the same machinery is conceptually similar, but
+we focus on deterministic multiway semantics
 and holographic provenance in a computational setting rather than on
 physical geometry.
 
@@ -94,29 +120,3 @@ The long-term vision is that computational holography becomes as
 standard as content-addressing and version control are today: every
 nontrivial system records not just \emph{what} happened, but a
 compact, verifiable encoding of \emph{how} it happened.
-
-\paragraph{Determinism invariants (Echo).}
-In the concrete \AION{} runtime (Echo), the semantic assumptions above
-are enforced by a set of operational invariants; any violation aborts
-the tick deterministically and emits an error node for replay analysis:
-\begin{itemize}[leftmargin=*]
-  \item \textbf{World Equivalence:} identical diff sequences and merge
-    decisions yield identical world hashes.
-  \item \textbf{Merge Determinism:} given the same base snapshot, diffs,
-    and merge strategies, the resulting snapshot and diff hashes are
-    identical.
-  \item \textbf{Temporal Stability:} GC, compression, and inspector
-    activity do not alter logical state.
-  \item \textbf{Schema Consistency:} component layout hashes must match
-    before merges; mismatches block the merge.
-  \item \textbf{Causal Integrity:} writes cannot modify values they
-    transitively read earlier in Chronos; paradoxes are detected and
-    isolated.
-  \item \textbf{Entropy Reproducibility:} branch entropy is a
-    deterministic function of recorded events.
-  \item \textbf{Replay Integrity:} replaying from node $A$ to $B$
-    produces identical world hash, event order, and PRNG draw counts.
-\end{itemize}
-These invariants guide both implementation and test suites and ensure
-that the abstract confluence properties proven here manifest as
-bit-level reproducibility in practice.
