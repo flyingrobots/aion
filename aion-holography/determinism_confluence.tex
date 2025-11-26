@@ -60,9 +60,9 @@ $\OGraph_T$ satisfying the usual gluing conditions.
     ]
     % baseline graph
     \node[node] (a) at (0,0) {$a$};
-    \node[node,del] (b) at (1.8,0.9) {$b$};
-    \node[node,use] (c) at (3.6,0) {$c$};
-    \node[node] (d) at (1.8,-1.0) {$d$};
+    \node[node,del] (b) at (2.2,1.2) {$b$};
+    \node[node,use] (c) at (4.1,0.1) {$c$};
+    \node[node] (d) at (2.1,-1.3) {$d$};
     \draw[edge] (a) -- (b);
     \draw[edge] (b) -- (c);
     \draw[edge] (a) -- (d);
@@ -70,19 +70,17 @@ $\OGraph_T$ satisfying the usual gluing conditions.
 
     % match 1
     \draw[rounded corners,thick,teal!70]
-      ( -0.5, -0.6) rectangle (2.6,1.3);
-    \node[anchor=west,teal!70!black] at (2.65,1.25) {$m_1$};
+      ( -0.5, -0.9) rectangle (2.9,1.6);
+    \node[anchor=west,teal!70!black] at (3.05,1.55) {$m_1$};
 
     % match 2
     \draw[rounded corners,thick,orange!80]
-      (1.0,-1.4) rectangle (4.2,1.1);
-    \node[anchor=west,orange!80!black] at (4.25,1.05) {$m_2$};
+      (0.9,-1.7) rectangle (4.7,1.4);
+    \node[anchor=west,orange!80!black] at (4.85,1.35) {$m_2$};
 
     % legend
-    \node[node,del] (ld) at (0.4,-2.0) {};
-    \node[anchor=west] at (0.7,-2.0) {delete set $\Del(m_i)$};
-    \node[node,use] (lu) at (2.6,-2.0) {};
-    \node[anchor=west] at (2.9,-2.0) {use set $\Use(m_i)$};
+    \node[node,del,label=right:{\scriptsize delete $\Del(m_i)$}] at (0.5,-2.4) {};
+    \node[node,use,label=right:{\scriptsize use $\Use(m_i)$}]    at (2.5,-2.4) {};
   \end{tikzpicture}
   \caption{Two overlapping matches on the skeleton plane.  Shaded nodes
   illustrate $\Del$ (red) and $\Use$ (blue).  Independence requires
