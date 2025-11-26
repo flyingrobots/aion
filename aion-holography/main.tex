@@ -27,6 +27,7 @@
     <8> stmary8
     <9> stmary9
     <10> stmary10
+    <10.5> stmary10
     <10.95> stmary10
     <12> stmary10
     <14.4> stmary10
@@ -62,9 +63,9 @@
 
 \begin{document}
 
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
 \input{titlepage}
-
-\maketitle
 
 \begin{abstract}
 We develop a formal model of \emph{computational holography}: a way of
@@ -84,19 +85,24 @@ confluent tick semantics and a quasi-pseudometric geometry on
 observers.
 \end{abstract}
 
+\clearpage
 \tableofcontents
 
-\input{sections/assumptions}
-\input{sections/intro}
-\input{sections/rmg}
-\input{sections/dpo_rmg}
-\input{sections/determinism_confluence}
-\input{sections/holography}
-\input{sections/wormholes}
-\input{sections/rulial_distance}
-\input{sections/multiway_ruliad}
-\input{sections/ethics}
-\input{sections/discussion}
+\clearpage
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+
+\input{assumptions}
+\input{intro}
+\input{rmg}
+\input{dpo_rmg}
+\input{determinism_confluence}
+\input{holography}
+\input{wormholes}
+\input{rulial_distance}
+\input{multiway_ruliad}
+\input{ethics}
+\input{discussion}
 
 \bibliographystyle{alpha}
 \bibliography{references}
@@ -110,3 +116,5 @@ Romanesco cauliflowers, and all---is developed elsewhere; here we focus
 on the mathematics.
 
 \end{document}
+% Hack: force arXiv to run 4 passes by mimicking LaTeX rerun warning
+\typeout{get arXiv to do 4 passes: Label(s) may have changed. Rerun}

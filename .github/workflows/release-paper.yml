@@ -1,0 +1,48 @@
+name: Release Paper PDF
+
+on:
+  push:
+    tags:
+      # Only trigger for tags ending in "-paper"
+      - "v*-paper"
+
+jobs:
+  release:
+    name: Release PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: aion-holography
+          root_file: main.tex
+          latexmk_use_xelatex: false
+          args: -pdf -interaction=nonstopmode -halt-on-error
+
+      - name: Set PDF path
+        id: pdf
+        run: |
+          FILE_PATH="aion-holography/main.pdf"
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "ERROR: Could not find $FILE_PATH"
+            exit 1
+          fi
+          echo "path=$FILE_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ${{ steps.pdf.outputs.path }}#AIon-Computational-Holography-${{ github.ref_name }}.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -8,7 +8,10 @@ MAIN    = main
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex sections/*.tex macros.tex references.bib
+
+TEX_SRCS = $(filter-out $(MAIN).tex,$(wildcard *.tex))
+
+$(MAIN).pdf: $(MAIN).tex $(TEX_SRCS) references.bib
 	$(TEX) $(MAIN)
 	$(BIB) $(MAIN)
 	$(TEX) $(MAIN)

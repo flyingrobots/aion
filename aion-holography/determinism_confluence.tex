@@ -2,6 +2,9 @@
 \section{Determinism and Confluence}
 \label{sec:determinism}
 
+Throughout this section we work under the standing assumptions
+summarised on page~\pageref{sec:assumptions}.
+
 We sketch the concurrency discipline, define independence, and state the
 main confluence theorems for tick-level execution, working with RMG
 states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
@@ -11,7 +14,7 @@ states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
 We work at the level of the skeleton plane.  Write $G_S$ for the
 skeleton component of $G$, and likewise $L_S$, $K_S$, $R_S$ for the
 underlying skeleton graphs of a rule.  Let
-$\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
+$U = (G;\alpha,\beta)$ be an RMG state and let
 $p = (L \xleftarrow{\ell} K \xrightarrow{r} R)$ be a DPOI rule.  A
 \emph{skeleton match} is a mono $m_S : L_S \hookrightarrow G_S$ in
 $\OGraph_T$ satisfying the usual gluing conditions.
@@ -46,14 +49,53 @@ $\OGraph_T$ satisfying the usual gluing conditions.
   written by the other.
 \end{definition}
 
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}[
+      node/.style={circle,draw=gray!60,fill=gray!10,thick,minimum size=8mm},
+      del/.style={fill=red!25},
+      use/.style={fill=blue!20},
+      edge/.style={-Latex,thick,gray!60},
+      >=Latex
+    ]
+    % baseline graph
+    \node[node] (a) at (0,0) {$a$};
+    \node[node,del] (b) at (2.2,1.2) {$b$};
+    \node[node,use] (c) at (4.1,0.1) {$c$};
+    \node[node] (d) at (2.1,-1.3) {$d$};
+    \draw[edge] (a) -- (b);
+    \draw[edge] (b) -- (c);
+    \draw[edge] (a) -- (d);
+    \draw[edge] (d) -- (c);
+
+    % match 1
+    \draw[rounded corners,thick,teal!70]
+      ( -0.5, -0.9) rectangle (2.9,1.6);
+    \node[anchor=west,teal!70!black] at (3.05,1.55) {$m_1$};
+
+    % match 2
+    \draw[rounded corners,thick,orange!80]
+      (0.9,-1.7) rectangle (4.7,1.4);
+    \node[anchor=west,orange!80!black] at (4.85,1.35) {$m_2$};
+
+    % legend
+    % legend in separate inset box below
+  \end{tikzpicture}
+  \caption{Two overlapping matches on the skeleton plane.  Shaded nodes
+  illustrate $\Del$ (red) and $\Use$ (blue).  Independence requires
+  $\Del(m_1)\cap\Use(m_2)=\Del(m_2)\cap\Use(m_1)=\emptyset$, ruling out
+  destructive interference between the batches.}
+  \label{fig:footprint}
+\end{figure}
+
 \subsubsection{Scheduler--admissible batches}
 
 \begin{definition}[Scheduler--admissible batch]\label{def:batch}
-  Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state.  A finite
+  Let $U = (G;\alpha,\beta)$ be an RMG state.  A finite
   family of skeleton matches
   $B = \{m_{i,S} : L_{i,S} \to G_S\}_{i\in I}$ is
   \emph{scheduler--admissible} if the matches are pairwise
-  independent in the sense of \cref{def:independence}, i.e.
+  independent in the sense of Definition~\ref{def:independence}, i.e.
   \[
     \Del(m_{i,S}) \cap \Use(m_{j,S}) = \emptyset
     \quad\text{for all distinct } i,j\in I.
@@ -70,7 +112,7 @@ $m : L \hookrightarrow G$ satisfying the usual gluing conditions
 given by the standard double square (pushout complement + pushout).
 
 We work with RMG states and tick semantics as defined in
-\cref{def:rmg-state,def:rmg-tick}.  In this section we analyse when
+Definitions~\ref{def:rmg-state} and~\ref{def:rmg-tick}.  In this section we analyse when
 batches of matches can be scheduled concurrently without affecting the
 resulting state.  The deterministic properties proved here apply
 uniformly to all derivations; applying them to cognitive systems
@@ -78,11 +120,11 @@ introduces additional ethical structure developed in
 \cref{sec:ethics}.
 
 The scheduler computes a maximal independent set of matches in the
-sense of \cref{def:batch}, using a safe over-approximation of
+sense of Definition~\ref{def:batch}, using a safe over-approximation of
 $\Use\cup\Del$; we do not repeat the implementation details here.
 
 \begin{theorem}[Skeleton-plane tick confluence]\label{thm:tick-confluence}
-  Let $\mathcal{U} = (G;\alpha,\beta)$ be an RMG state and let
+  Let $U = (G;\alpha,\beta)$ be an RMG state and let
   $B = \{m_{i,S} : L_{i,S} \hookrightarrow G_S\}_{i\in I}$ be a
   scheduler--admissible batch for a family of DPOI rules.  Then any
   two sequentialisations of the corresponding DPOI steps yield
@@ -94,7 +136,9 @@ By scheduler--admissibility, the skeleton matches
 $\{m_{i,S} : L_{i,S} \hookrightarrow G_S\}$ are pairwise independent in
 the sense of \cref{def:independence}.  By the Concurrency / Parallel
 Independence Theorem for DPO rewriting in adhesive categories
-(see, e.g.,~\cite{EEPT06}), parallel independent steps commute: for
+(see, e.g.,~\cite{EEPT06}; similar categorical techniques appear in the
+space--time reversible graph-rewriting setting of~\cite{Arrighi2025Reversible}),
+parallel independent steps commute: for
 any $i \neq j$ we have a diagram
 \[
   G_S \;\Rightarrow_{(p_i,m_{i,S})}\; G_i
@@ -137,7 +181,7 @@ isomorphism for RMG states.
 
 Combining \cref{thm:tick-confluence} with the two-plane commutation
 result (\cref{thm:two-plane}) shows that a tick that satisfies the
-no-delete/no-clone discipline has a unique outcome up to
+no-delete/no-clone-under-descent invariant has a unique outcome up to
 isomorphism in the full RMG semantics.
 
 \begin{corollary}[Worldline uniqueness]\label{cor:worldline-uniqueness}
@@ -177,8 +221,8 @@ An \emph{attachment step} is a DPOI step in some fiber
 $\pi^{-1}(G)$; a \emph{skeleton step} is a DPOI step in the base
 $\OGraph_T$.  Both are built from pushouts along monos.
 
-\begin{definition}[No-delete/no-clone under descent]\label{def:no-delete}
-  Consider a tick on an RMG state $\mathcal{U} = (G;\alpha,\beta)$
+\begin{definition}[No-delete/no-clone-under-descent]\label{def:no-delete}
+Consider a tick on an RMG state $U = (G;\alpha,\beta)$
   consisting of
   \begin{enumerate}[leftmargin=*]
     \item a family of attachment--plane DPOI steps, each acting inside
@@ -188,8 +232,8 @@ $\OGraph_T$.  Both are built from pushouts along monos.
       $G_S \Rewrite_S G_S'$ induced by a rule and match
       $m_S : L_S \to G_S$.
   \end{enumerate}
-  We say that this tick satisfies \emph{no-delete/no-clone under
-  descent} if:
+  We say that this tick satisfies \emph{no-delete/no-clone-under-descent}
+  if:
   \begin{enumerate}[leftmargin=*]
     \item[(ND)] (\emph{No delete under descent.})
       If a skeleton vertex or edge $x\in G_S$ is deleted by the
@@ -204,15 +248,15 @@ $\OGraph_T$.  Both are built from pushouts along monos.
       steps in the same tick.  In particular, no attachment object is
       copied to multiple descendants of $x$.
   \end{enumerate}
-  A rule pack $R$ satisfies no-delete/no-clone under descent if every
+  A rule pack $R$ satisfies no-delete/no-clone-under-descent if every
   tick generated from $R$ has this property.
 \end{definition}
 
 \begin{theorem}[Two-plane commutation]\label{thm:two-plane}
 Let $R$ be a rule pack satisfying the no-delete/no-clone-under-descent
-invariant of \cref{def:no-delete}.  Let
-$\mathcal{U} = (G;\alpha,\beta)$ be an RMG state generated from $R$.
-Let $A : \mathcal{U} \Rewrite \mathcal{U}_A$ be a finite composite of
+invariant of Definition~\ref{def:no-delete}.  Let
+$U = (G;\alpha,\beta)$ be an RMG state generated from $R$.
+Let $A : U \Rewrite U_A$ be a finite composite of
 attachment steps in the fiber over $G$, and let
 $S : G \Rewrite G'$ be the skeleton DPOI step induced by the same tick
 such that the tick consisting of $A$ followed by $S$ satisfies the
@@ -331,7 +375,7 @@ Then the rewrite relation is confluent.
 This theorem applies directly to the skeleton plane; together with the
 no-delete/no-clone-under-descent invariant and two-plane commutation,
 it yields uniqueness of \emph{worldlines} at the level of RMG states
-when the rule pack satisfies these conditions.
+for rule packs satisfying these termination / critical-pair conditions.
 
 Under the hypotheses of the global confluence theorem, any two complete
 derivations from a fixed initial state are joinable and yield
