@@ -16,7 +16,7 @@ model in which:
   \item all evolution of that state is given by well-typed graph
     rewrites;
   \item under an explicit independence discipline and
-    no-delete/no-clone under descent invariants, the operational
+    no-delete/no-clone-under-descent invariants, the operational
     semantics is deterministic (up to typed open-graph isomorphism)
     and confluent at the level of ``ticks'' of computation
     (\cref{thm:tick-confluence,thm:two-plane,thm:global}); and
@@ -35,7 +35,9 @@ We extend this setting with:
   \item a two-plane concurrent operational semantics with
     attachment--then--skeleton publication, together with
     confluence results: tick-level determinism and two-plane
-    commutation, plus conditions for global confluence;
+    commutation (Theorems~\ref{thm:tick-confluence} and
+    \ref{thm:two-plane}), and, under standard rewrite-theory
+    hypotheses, global confluence (Theorem~\ref{thm:global});
   \item a provenance payload calculus giving \emph{computational
     holography};
   \item an MDL-based quasi-pseudometric on observers, the \emph{rulial
@@ -62,6 +64,9 @@ The main results of this paper are:
   \item \emph{Two-plane commutation} (Theorem~\ref{thm:two-plane}):
     attachment and skeleton updates can be applied in either order up to
     isomorphism, via a fibration structure;
+  \item \emph{Worldline uniqueness} (Corollary~\ref{cor:worldline-uniqueness}):
+    every schedule of a given tick produces the same successor up to
+    isomorphism;
   \item \emph{Computational holography} (Theorem~\ref{thm:holography}):
     the boundary data $(S_0,P)$ is information-complete with respect to
     the interior evolution, enabling reconstruction of the full

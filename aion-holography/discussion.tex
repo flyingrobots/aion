@@ -93,3 +93,9 @@ The long-term vision is that computational holography becomes as
 standard as content-addressing and version control are today: every
 nontrivial system records not just \emph{what} happened, but a
 compact, verifiable encoding of \emph{how} it happened.
+
+In the concrete \AION{} runtime (Echo), these semantic assumptions are
+enforced as determinism invariants---world-hash equivalence, merge
+determinism, temporal stability, and replay integrity---which ensure
+that the abstract confluence properties proven here manifest as
+bit-level reproducibility in practice.

@@ -2,6 +2,9 @@
 \section{Determinism and Confluence}
 \label{sec:determinism}
 
+Throughout this section we work under the standing assumptions
+summarised on page~\texttt{ii}.
+
 We sketch the concurrency discipline, define independence, and state the
 main confluence theorems for tick-level execution, working with RMG
 states and tick semantics as introduced in \cref{def:rmg-state,def:rmg-tick}.
@@ -179,7 +182,7 @@ An \emph{attachment step} is a DPOI step in some fiber
 $\pi^{-1}(G)$; a \emph{skeleton step} is a DPOI step in the base
 $\OGraph_T$.  Both are built from pushouts along monos.
 
-\begin{definition}[No-delete/no-clone under descent]\label{def:no-delete}
+\begin{definition}[No-delete/no-clone-under-descent]\label{def:no-delete}
   Consider a tick on an RMG state $\mathcal{U} = (G;\alpha,\beta)$
   consisting of
   \begin{enumerate}[leftmargin=*]
@@ -190,8 +193,8 @@ $\OGraph_T$.  Both are built from pushouts along monos.
       $G_S \Rewrite_S G_S'$ induced by a rule and match
       $m_S : L_S \to G_S$.
   \end{enumerate}
-  We say that this tick satisfies \emph{no-delete/no-clone under
-  descent} if:
+  We say that this tick satisfies \emph{no-delete/no-clone-under-descent}
+  if:
   \begin{enumerate}[leftmargin=*]
     \item[(ND)] (\emph{No delete under descent.})
       If a skeleton vertex or edge $x\in G_S$ is deleted by the
@@ -206,7 +209,7 @@ $\OGraph_T$.  Both are built from pushouts along monos.
       steps in the same tick.  In particular, no attachment object is
       copied to multiple descendants of $x$.
   \end{enumerate}
-  A rule pack $R$ satisfies no-delete/no-clone under descent if every
+  A rule pack $R$ satisfies no-delete/no-clone-under-descent if every
   tick generated from $R$ has this property.
 \end{definition}
 
@@ -333,7 +336,7 @@ Then the rewrite relation is confluent.
 This theorem applies directly to the skeleton plane; together with the
 no-delete/no-clone-under-descent invariant and two-plane commutation,
 it yields uniqueness of \emph{worldlines} at the level of RMG states
-when the rule pack satisfies these conditions.
+for rule packs satisfying these termination / critical-pair conditions.
 
 Under the hypotheses of the global confluence theorem, any two complete
 derivations from a fixed initial state are joinable and yield
