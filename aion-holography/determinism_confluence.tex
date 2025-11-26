@@ -232,6 +232,10 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
       $G_S \Rewrite_S G_S'$ induced by a rule and match
       $m_S : L_S \to G_S$.
   \end{enumerate}
+  We say that an object $y$ in an attachment graph has
+  \emph{skeleton ancestor} $x \in G_S$ if it lies in the finite tree of
+  attachments rooted at the fibre over $x$, following the recursive
+  attachment structure of \cref{sec:rmg}.
   We say that this tick satisfies \emph{no-delete/no-clone-under-descent}
   if:
   \begin{enumerate}[leftmargin=*]
@@ -239,8 +243,7 @@ Consider a tick on an RMG state $U = (G;\alpha,\beta)$
       If a skeleton vertex or edge $x\in G_S$ is deleted by the
       skeleton step (i.e.\ $x \in \Del(m_S)$), then the fibre over $x$
       is empty before the tick: no object in any attachment graph has
-      $x$ as its skeleton ancestor, i.e.\ lies in the finite tree of
-      attachments rooted at the fibre over $x$.
+      $x$ as its skeleton ancestor.
     \item[(NC)] (\emph{No clone under descent.})
       The skeleton step does not implicitly duplicate attachment state:
       whenever a skeleton vertex or edge $x\in G_S$ is preserved and
