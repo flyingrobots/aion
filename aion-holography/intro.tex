@@ -17,7 +17,7 @@ model in which:
     rewrites;
   \item under an explicit independence discipline and
     no-delete/no-clone-under-descent invariants, the operational
-    semantics is deterministic (up to typed open-graph isomorphism)
+    semantics is deterministic (up to typed open graph isomorphism)
     and confluent at the level of ``ticks'' of computation
     (\cref{thm:tick-confluence,thm:two-plane,thm:global}); and
   \item the \emph{entire} interior evolution of a computation is stored
@@ -59,14 +59,16 @@ operating system.
 The main results of this paper are:
 \begin{enumerate}[leftmargin=5mm]
   \item \emph{Tick-level confluence} (Theorem~\ref{thm:tick-confluence}):
-    parallel independent RMG rewrites commute, yielding deterministic
-    semantics independent of scheduler serialization order;
+    parallel independent RMG rewrites commute, yielding per-tick
+    deterministic semantics independent of scheduler serialization
+    order;
   \item \emph{Two-plane commutation} (Theorem~\ref{thm:two-plane}):
     attachment and skeleton updates can be applied in either order up to
     isomorphism, via a fibration structure;
   \item \emph{Worldline uniqueness} (Corollary~\ref{cor:worldline-uniqueness}):
-    every schedule of a given tick produces the same successor up to
-    isomorphism;
+    any complete execution (all tick steps) yields a single worldline
+    up to typed open graph isomorphism, regardless of scheduler order,
+    extending tick-level commutation to whole runs;
   \item \emph{Computational holography} (Theorem~\ref{thm:holography}):
     the boundary data $(S_0,P)$ is information-complete with respect to
     the interior evolution, enabling reconstruction of the full
