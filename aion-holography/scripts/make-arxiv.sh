@@ -17,9 +17,13 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SRC="${ROOT}/aion-holography"
 OUT="${ROOT}/ax.tar"
 
-echo "==> Building PDF to refresh main.bbl"
 cd "${SRC}"
-latexmk -pdf main.tex >/dev/null
+if [[ "${SKIP_LATEXMK:-0}" == "1" ]]; then
+  echo "==> Skipping latexmk (SKIP_LATEXMK=1); assuming main.bbl is current"
+else
+  echo "==> Building PDF to refresh main.bbl"
+  latexmk -pdf main.tex >/dev/null
+fi
 
 echo "==> Assembling arXiv payload"
 WORKDIR="$(mktemp -d "${ROOT}/arxiv.XXXXXX")"

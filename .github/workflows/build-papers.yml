@@ -30,7 +30,7 @@ jobs:
     - name: Build arXiv tarball
       run: |
         chmod +x aion-holography/scripts/make-arxiv.sh
-        bash -euo pipefail aion-holography/scripts/make-arxiv.sh
+        SKIP_LATEXMK=1 bash -euo pipefail aion-holography/scripts/make-arxiv.sh
 
     - name: Verify arXiv tarball exists
       if: success()
