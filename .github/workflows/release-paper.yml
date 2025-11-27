@@ -32,15 +32,12 @@ jobs:
         run: SKIP_LATEXMK=1 aion-holography/scripts/make-arxiv.sh
 
       - name: Validate arXiv tarball
-        id: tarball_check
         run: |
           if [ -s ax.tar ]; then
             echo "✅ ax.tar found and non-empty"
             ls -lh ax.tar
-            echo "present=true" >> "$GITHUB_OUTPUT"
           else
             echo "❌ ax.tar missing or empty after make-arxiv.sh" >&2
-            echo "present=false" >> "$GITHUB_OUTPUT"
             exit 1
           fi
 
@@ -60,7 +57,7 @@ jobs:
 
       - name: Create GitHub Release
         id: create_release
-        if: success() && steps.tarball_check.outputs.present == 'true'
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
