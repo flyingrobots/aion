@@ -36,6 +36,7 @@ jobs:
         run: |
           if [ -s ax.tar ]; then
             echo "✅ ax.tar found and non-empty"
+            ls -lh ax.tar
             echo "present=true" >> "$GITHUB_OUTPUT"
           else
             echo "❌ ax.tar missing or empty after make-arxiv.sh" >&2

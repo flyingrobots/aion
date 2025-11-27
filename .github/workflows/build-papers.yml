@@ -35,10 +35,11 @@ jobs:
     - name: Verify arXiv tarball exists
       if: success()
       run: |
-        if [ -f ax.tar ]; then
+        if [ -s ax.tar ]; then
           echo "✅ ax.tar found; proceeding to upload"
+          ls -lh ax.tar
         else
-          echo "❌ ax.tar missing; make-arxiv.sh likely failed" >&2
+          echo "❌ ax.tar missing or empty; make-arxiv.sh likely failed" >&2
           exit 1
         fi
 
