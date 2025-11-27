@@ -39,5 +39,5 @@ find "${WORKDIR}" -maxdepth 1 -name '*.tex' -type f -print0 | while IFS= read -r
 done
 
 echo "==> Creating ax.tar at ${OUT}"
-tar -C "${WORKDIR}" -cvf "${OUT}" . >/dev/null
+tar -C "${WORKDIR}" -cf "${OUT}" . >/dev/null
 echo "Wrote ${OUT}"
