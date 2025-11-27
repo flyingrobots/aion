@@ -26,7 +26,7 @@ jobs:
           args: -pdf -interaction=nonstopmode -halt-on-error
 
       - name: Build arXiv tarball
-        run: scripts/make-arxiv.sh
+        run: aion-holography/scripts/make-arxiv.sh
 
       - name: Set PDF path
         id: pdf
