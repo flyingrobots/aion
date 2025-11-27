@@ -25,16 +25,19 @@ echo "==> Assembling arXiv payload"
 WORKDIR="$(mktemp -d "${ROOT}/arxiv.XXXXXX")"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
-# Copy only the needed files.
-rsync -a --prune-empty-dirs \
-  --include 'Makefile' \
-  --include '*.tex' \
-  --include 'main.bbl' \
-  --exclude '*' \
-  "${SRC}/" "${WORKDIR}/"
+# Copy only the needed files into a flat layout (arXiv requires no subdirs).
+find "${SRC}" -type f \( -name 'Makefile' -o -name '*.tex' -o -name 'main.bbl' \) -print0 \
+  | while IFS= read -r -d '' f; do
+    dest="${WORKDIR}/$(basename "$f")"
+    if [[ -e "${dest}" ]]; then
+      echo "Duplicate filename detected while flattening: $(basename "$f")" >&2
+      exit 1
+    fi
+    cp "$f" "$dest"
+  done
 
 # Strip full-line comments from .tex sources (keep inline %).
-find "${WORKDIR}" -maxdepth 1 -name '*.tex' -type f -print0 | while IFS= read -r -d '' f; do
+find "${WORKDIR}" -name '*.tex' -type f -print0 | while IFS= read -r -d '' f; do
   perl -ni -e 'next if /^\\s*%/; print' "$f"
 done
 
