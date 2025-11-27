@@ -17,26 +17,33 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SRC="${ROOT}/aion-holography"
 OUT="${ROOT}/ax.tar"
 
-echo "==> Building PDF to refresh main.bbl"
 cd "${SRC}"
-latexmk -pdf main.tex >/dev/null
+if [[ "${SKIP_LATEXMK:-0}" == "1" ]]; then
+  echo "==> Skipping latexmk (SKIP_LATEXMK=1); assuming main.bbl is current"
+else
+  echo "==> Building PDF to refresh main.bbl"
+  latexmk -pdf main.tex >/dev/null
+fi
 
 echo "==> Assembling arXiv payload"
 WORKDIR="$(mktemp -d "${ROOT}/arxiv.XXXXXX")"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
-# Copy only the needed files.
-rsync -a --prune-empty-dirs \
-  --include 'Makefile' \
-  --include '*.tex' \
-  --include 'main.bbl' \
-  --exclude '*' \
-  "${SRC}/" "${WORKDIR}/"
+# Copy only the needed files into a flat layout (arXiv requires no subdirs).
+find "${SRC}" -type f \( -name 'Makefile' -o -name '*.tex' -o -name 'main.bbl' \) -print0 \
+  | while IFS= read -r -d '' f; do
+    dest="${WORKDIR}/$(basename "$f")"
+    if [[ -e "${dest}" ]]; then
+      echo "Duplicate filename detected while flattening: $(basename "$f")" >&2
+      exit 1
+    fi
+    cp "$f" "$dest"
+  done
 
 # Strip full-line comments from .tex sources (keep inline %).
-find "${WORKDIR}" -maxdepth 1 -name '*.tex' -type f -print0 | while IFS= read -r -d '' f; do
+while IFS= read -r -d '' f; do
   perl -ni -e 'next if /^\\s*%/; print' "$f"
-done
+done < <(find "${WORKDIR}" -name '*.tex' -type f -print0)
 
 echo "==> Creating ax.tar at ${OUT}"
 tar -C "${WORKDIR}" -cf "${OUT}" . >/dev/null
