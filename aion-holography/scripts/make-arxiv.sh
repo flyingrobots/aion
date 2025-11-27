@@ -37,9 +37,9 @@ find "${SRC}" -type f \( -name 'Makefile' -o -name '*.tex' -o -name 'main.bbl' \
   done
 
 # Strip full-line comments from .tex sources (keep inline %).
-find "${WORKDIR}" -name '*.tex' -type f -print0 | while IFS= read -r -d '' f; do
+while IFS= read -r -d '' f; do
   perl -ni -e 'next if /^\\s*%/; print' "$f"
-done
+done < <(find "${WORKDIR}" -name '*.tex' -type f -print0)
 
 echo "==> Creating ax.tar at ${OUT}"
 tar -C "${WORKDIR}" -cvf "${OUT}" . >/dev/null
