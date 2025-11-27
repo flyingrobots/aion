@@ -24,11 +24,21 @@ jobs:
         latexmk_use_xelatex: false
         args: -pdf -interaction=nonstopmode -halt-on-error
 
+    - name: Build arXiv tarball
+      run: scripts/make-arxiv.sh
+
     - name: Upload PDF as artifact
       uses: actions/upload-artifact@v4
       with:
         name: holography-paper-pdf
         path: aion-holography/main.pdf
+        retention-days: 30
+
+    - name: Upload arXiv tarball as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: holography-paper-arxiv
+        path: ax.tar
         retention-days: 30
 
     - name: Rename PDF for release
@@ -41,4 +51,6 @@ jobs:
       if: github.event_name == 'release'
       uses: softprops/action-gh-release@v2
       with:
-        files: aion-holography/computational-holography-rmg.pdf
+        files: |
+          aion-holography/computational-holography-rmg.pdf
+          ax.tar

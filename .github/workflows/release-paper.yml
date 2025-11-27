@@ -25,6 +25,9 @@ jobs:
           latexmk_use_xelatex: false
           args: -pdf -interaction=nonstopmode -halt-on-error
 
+      - name: Build arXiv tarball
+        run: scripts/make-arxiv.sh
+
       - name: Set PDF path
         id: pdf
         run: |
@@ -50,5 +53,6 @@ jobs:
           generate_release_notes: true
           files: |
             AIon-Computational-Holography-${{ github.ref_name }}.pdf
+            ax.tar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
