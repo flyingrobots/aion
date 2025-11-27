@@ -28,6 +28,18 @@ jobs:
       - name: Build arXiv tarball
         run: aion-holography/scripts/make-arxiv.sh
 
+      - name: Validate arXiv tarball
+        id: tarball_check
+        run: |
+          if [ -s ax.tar ]; then
+            echo "✅ ax.tar found and non-empty"
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "❌ ax.tar missing or empty after make-arxiv.sh" >&2
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
       - name: Set PDF path
         id: pdf
         run: |
@@ -44,6 +56,7 @@ jobs:
 
       - name: Create GitHub Release
         id: create_release
+        if: success() && steps.tarball_check.outputs.present == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}

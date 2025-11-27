@@ -25,9 +25,22 @@ jobs:
         args: -pdf -interaction=nonstopmode -halt-on-error
 
     - name: Build arXiv tarball
-      run: aion-holography/scripts/make-arxiv.sh
+      run: |
+        chmod +x aion-holography/scripts/make-arxiv.sh
+        bash -euo pipefail aion-holography/scripts/make-arxiv.sh
+
+    - name: Verify arXiv tarball exists
+      if: success()
+      run: |
+        if [ -f ax.tar ]; then
+          echo "✅ ax.tar found; proceeding to upload"
+        else
+          echo "❌ ax.tar missing; make-arxiv.sh likely failed" >&2
+          exit 1
+        fi
 
     - name: Upload PDF as artifact
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: holography-paper-pdf
@@ -35,6 +48,7 @@ jobs:
         retention-days: 30
 
     - name: Upload arXiv tarball as artifact
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: holography-paper-arxiv
@@ -42,13 +56,13 @@ jobs:
         retention-days: 30
 
     - name: Rename PDF for release
-      if: github.event_name == 'release'
+      if: success() && github.event_name == 'release'
       run: |
         cd aion-holography
         cp main.pdf computational-holography-rmg.pdf
 
     - name: Upload PDF to release
-      if: github.event_name == 'release'
+      if: success() && github.event_name == 'release' && hashFiles('ax.tar') != ''
       uses: softprops/action-gh-release@v2
       with:
         files: |
