@@ -42,5 +42,5 @@ while IFS= read -r -d '' f; do
 done < <(find "${WORKDIR}" -name '*.tex' -type f -print0)
 
 echo "==> Creating ax.tar at ${OUT}"
-tar -C "${WORKDIR}" -cvf "${OUT}" . >/dev/null
+tar -C "${WORKDIR}" -cf "${OUT}" . >/dev/null
 echo "Wrote ${OUT}"
