@@ -1,0 +1,3 @@
+[submodule "aion-computer-book"]
+	path = aion-computer-book
+	url = https://github.com/flyingrobots/aion-computer-book.git

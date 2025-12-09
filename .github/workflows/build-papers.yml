@@ -14,7 +14,9 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
 
     - name: Compile LaTeX (aion-holography)
       uses: xu-cheng/latex-action@v3
@@ -25,7 +27,23 @@ jobs:
         args: -pdf -interaction=nonstopmode -halt-on-error
 
     - name: Install LaTeX tools for arXiv packaging
-      run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+      run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science
+
+    - name: Build COMPUTER book
+      run: |
+        git submodule sync --recursive
+        git submodule update --init --recursive
+        cd aion-computer-book
+        make clean
+        make
+
+    - name: Upload COMPUTER book PDF
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: computer-book-pdf
+        path: aion-computer-book/computer.pdf
+        retention-days: 30
 
     - name: Build arXiv tarball
       run: |
