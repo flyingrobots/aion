@@ -29,6 +29,14 @@ jobs:
     - name: Install LaTeX tools for arXiv packaging
       run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
+    - name: Build COMPUTER book
+      run: |
+        git submodule sync --recursive
+        git submodule update --init --recursive
+        cd aion-computer-book
+        make clean
+        make
+
     - name: Build arXiv tarball
       run: |
         chmod +x aion-holography/scripts/make-arxiv.sh
