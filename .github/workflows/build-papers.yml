@@ -27,7 +27,7 @@ jobs:
         args: -pdf -interaction=nonstopmode -halt-on-error
 
     - name: Install LaTeX tools for arXiv packaging
-      run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-math-extra
+      run: sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science
 
     - name: Build COMPUTER book
       run: |
