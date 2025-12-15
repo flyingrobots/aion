@@ -4,3 +4,6 @@
 [submodule "aion-paper-01-warp"]
 	path = aion-paper-01-warp
 	url = https://github.com/flyingrobots/aion-paper-01-warp.git
+[submodule "aion-paper-02-worldlines"]
+	path = aion-paper-02-worldlines
+	url = https://github.com/flyingrobots/aion-paper-02-worldlines.git
