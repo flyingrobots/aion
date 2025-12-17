@@ -2,7 +2,7 @@
 
 # Computational Holography
 
-## Recursive Metagraphs, Rulial Distance, and Deterministic Multiway Computation
+## WARP Graphs, Rulial Distance, and Deterministic Multiway Computation
 
 **Status:** Foundations Series (Active Research)  
 **Author:** James Ross  
@@ -10,17 +10,17 @@
 
 ### 📖 Overview
 
-This repository contains the formal mathematical definitions and proofs for the **AION Architecture**—a post-Von Neumann computing model based on **Recursive Metagraphs (RMG)**.
+This repository contains the formal mathematical definitions and proofs for the **AION Architecture**—a post-Von Neumann computing model based on **WARP Graphs**.
 
 The central thesis of this work is that by strictly enforcing algebraic graph rewriting (DPOI) within a "Two-Plane" commutation discipline, we can transform execution history from a transient side-effect into a tangible, geometric object. We call this **Computational Holography**: the ability to encode the entire volume of a computation's interior evolution onto its boundary edge.
 
 ### Core Primitives
 
-#### 1. Recursive Metagraphs (RMG)
+#### 1. WARP Graphs
 
-Standard graphs are flat. Hypergraphs allow multi-way relations but remain flat. An **RMG** is defined inductively: a graph where every node and edge can carry a payload, and that payload can itself be an entire RMG.
+Standard graphs are flat. Hypergraphs allow multi-way relations but remain flat. A **WARP graph** is defined inductively: a graph where every node and edge can carry a payload, and that payload can itself be an entire WARP graph.
 
-* **Formal Definition:** RMG is the carrier of the initial algebra for the functor $F(X) = P + \prod_{S \in \mathcal{G}} (V_S \to X) \times (E_S \to X)$.
+* **Formal Definition:** WARP is the carrier of the initial algebra for the functor $F(X) = P + \prod_{S \in \mathcal{G}} (V_S \to X) \times (E_S \to X)$.
 * **Capability:** This allows for infinite nesting of state, enabling the system to model hierarchical dependencies (like ASTs, containerized processes, or neural networks) natively in the graph topology.
 
 #### 2. Double-Pushout with Interfaces (DPOI)
