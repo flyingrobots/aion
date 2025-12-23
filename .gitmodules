@@ -10,3 +10,6 @@
 [submodule "aion-paper-03-holography"]
 	path = aion-paper-03-holography
 	url = https://github.com/flyingrobots/aion-paper-03-holography.git
+[submodule "aion-paper-04-observer-geometry"]
+	path = aion-paper-04-observer-geometry
+	url = https://github.com/flyingrobots/aion-paper-04-observer-geometry.git
