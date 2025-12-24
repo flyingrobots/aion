@@ -1,4 +1,7 @@
-![aion](https://github.com/user-attachments/assets/3369bf0b-c251-45c0-94c4-56b9849d189e)
+<img src="https://github.com/user-attachments/assets/f2903ac7-9103-4f20-af22-4d97bae6ed19" alt="AION" align="center" />
+
+
+
 
 # Computational Holography
 
