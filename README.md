@@ -28,10 +28,10 @@ The series proceeds incrementally. Each paper assumes familiarity with its prede
 
 | # | Title | Status | Contribution |
 |---|-------|--------|--------------|
-| I | **WARP Graphs** | Published | Introduces recursive meta-graphs as the foundational substrate for causal, nested computation. |
-| II | **Computational Holography** | Published | Establishes how local graph structure encodes and reconstructs global semantic content. |
-| III | **Observer Geometry** | Published | Formalises multiple observer perspectives over a single causal structure. |
-| IV | **Echo Engine** | Published | Presents a deterministic scheduling algorithm based on Double-Pushout graph rewriting. |
+| I | **A Worldline Algebra for Recursive Provenance** | Published | Paper I introduces WARP graphs—finite directed multigraphs whose vertices and edges recursively carry attached WARP graphs—providing a minimal, well-founded "graphs all the way down" structure that unifies hierarchy, syntax, control flow, and provenance into a single algebraic object upon which the rest of the series builds. |
+| II | **Canonical State Evolution and Deterministic Worldlines** | Published | Paper II equips WARP graphs with a deterministic concurrent operational semantics—based on double-pushout rewriting in an adhesive category of typed open graphs—proving that any scheduler-admissible batch of rewrites commits to the same successor state regardless of internal serialisation order, thereby grounding replay and provenance in a single tick-confluent execution model. |
+| III | **Computational Holography & Provenance Payloads** | Published | Paper III formalises computational holography—proving that a deterministic WARP worldline's entire interior derivation is uniquely recoverable from a compact boundary encoding (initial state plus ordered tick patches), then develops practical machinery for slicing, branching, and multi-tick compression via wormholes. |
+| IV | **Rulial Distance & Observer Geometry** | Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
 | V | **Ethics & Sovereignty** | Draft | Addresses provenance, accountability, and the rights of computational agents. |
 | VI | **Architecture & Operating System** | Draft | Specifies JITOS, a causal operating system that instantiates the preceding theory. |
 
