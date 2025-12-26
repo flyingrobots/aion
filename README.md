@@ -75,11 +75,7 @@ The AIΩN Foundations Series develops the formal machinery required to make this
 
 These materials are © 2025 James Ross and licensed under Creative Commons Attribution 4.0 (CC BY 4.0); see LICENSE for details.
 
-The AIΩN Runtime and JITOS software projects referenced by the paper are not part of this repository. Those separate codebases are licensed under the Apache License, Version 2.0 (see their own repositories or Apache License 2.0).
-
-### More on AIΩN
-
-For updates, see the main [AIΩN](github.com/flyingrobots/aion) repository.
+The AIΩN Runtime and [JITOS](https://github.com/flyingrobots/jitos) software projects referenced by the paper are not part of this repository. Those separate codebases are licensed under the Apache License, Version 2.0 (see their own repositories or Apache License 2.0).
 
 AIΩN Foundations Series © 2025 by James Ross is licensed under CC BY 4.0. To view a copy of this license, visit [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
 
