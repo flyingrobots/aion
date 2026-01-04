@@ -10,7 +10,13 @@
 
 **A formal framework for deterministic, history-native computation.**
 
-[![Paper I](https://img.shields.io/badge/Paper_I-Published-brightgreen)](https://zenodo.org/...) [![Paper II](https://img.shields.io/badge/Paper_II-Published-brightgreen)](https://zenodo.org/...) [![Paper III](https://img.shields.io/badge/Paper_III-Published-brightgreen)](https://zenodo.org/...) [![Paper IV](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://zenodo.org/...) [![Paper V](https://img.shields.io/badge/Paper_V-Draft-yellow)]() [![Paper VI](https://img.shields.io/badge/Paper_VI-Draft-yellow)]()
+[![Paper I](https://img.shields.io/badge/Paper_I-Published-brightgreen)](https://doi.org/10.5281/zenodo.17908005) 
+[![Paper II](https://img.shields.io/badge/Paper_II-Published-brightgreen)](https://doi.org/10.5281/zenodo.17934512) 
+[![Paper III](https://img.shields.io/badge/Paper_III-Published-brightgreen)](https://doi.org/10.5281/zenodo.17963669) 
+[![Paper IV](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18038297)
+[![Paper V](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
+[![Paper VI](https://img.shields.io/badge/Paper_V-Draft-yellow)]() 
+[![Paper VII](https://img.shields.io/badge/Paper_VI-Draft-yellow)]()
 
 ---
 
@@ -44,8 +50,9 @@ The **AIΩN Foundations Series** develops the formal machinery and architectural
 | II | **Canonical State Evolution and Deterministic Worldlines** | Published | Paper II equips WARP graphs with a deterministic concurrent operational semantics—based on double-pushout rewriting in an adhesive category of typed open graphs—proving that any scheduler-admissible batch of rewrites commits to the same successor state regardless of internal serialisation order, thereby grounding replay and provenance in a single tick-confluent execution model. |
 | III | **Computational Holography & Provenance Payloads** | Published | Paper III formalises computational holography—proving that a deterministic WARP worldline's entire interior derivation is uniquely recoverable from a compact boundary encoding (initial state plus ordered tick patches), then develops practical machinery for slicing, branching, and multi-tick compression via wormholes. |
 | IV | **Rulial Distance & Observer Geometry** | Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
-| V | **Ethics & Sovereignty** | Draft | Addresses provenance, accountability, computational agency, and fork/termination responsibility. _COMING SOON_ |
-| VI | **Architecture & Operating System** | Draft | Specifies JITOS, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
+| V | **Emergent Dynamics from Deterministic Rewrite Systems** | Published | By equipping deterministic rewrite histories with a local action functional, this paper establishes that quantum interference, unitary evolution, and the thermodynamic arrow of time emerge naturally as artifacts of observer-induced coarse-graining rather than as intrinsic physical postulates. |
+| VI | **Ethics & Sovereignty** | Draft | Addresses provenance, accountability, computational agency, and fork/termination responsibility. _COMING SOON_ |
+| VII | **Architecture & Operating System** | Draft | Specifies JITOS, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
 
 ---
 
