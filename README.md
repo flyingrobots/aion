@@ -14,9 +14,9 @@
 [![Paper II](https://img.shields.io/badge/Paper_II-Published-brightgreen)](https://doi.org/10.5281/zenodo.17934512) 
 [![Paper III](https://img.shields.io/badge/Paper_III-Published-brightgreen)](https://doi.org/10.5281/zenodo.17963669) 
 [![Paper IV](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18038297)
-[![Paper V](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
-[![Paper VI](https://img.shields.io/badge/Paper_V-Draft-yellow)]() 
-[![Paper VII](https://img.shields.io/badge/Paper_VI-Draft-yellow)]()
+[![Paper V](https://img.shields.io/badge/Paper_V-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
+[![Paper VI](https://img.shields.io/badge/Paper_VI-Draft-yellow)]() 
+[![Paper VII](https://img.shields.io/badge/Paper_VII-Draft-yellow)]()
 
 ---
 
