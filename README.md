@@ -112,7 +112,23 @@ Introducing: **Continuum** —- a **causal operating system** that computes **de
 
 Continuum is not a thought experiment. It is real, working software that demonstrates the AIΩN execution model, with a deterministic WARP graph rewriting kernel, a browser-based WASM runtime, and real performance benchmarks. The Continuum project serves as the canonical reference implementation and living design record for the AIΩN system.
 
-[Learn more about Continuum](https://github.com/flyingrobots/Continuum) –– try it in your browser!
+[Learn more about Continuum](https://github.com/flyingrobots/Continuum) –– try it in your browser (_coming soon_)!
+
+---
+
+<a href="https://github.com/flyingrobots/echo"><img alt="Echo" src="https://github.com/user-attachments/assets/1c4f0c70-caad-456a-9f4b-dc74a0d275c6" /></a>
+
+Echo is a deterministic graph‑rewrite engine + tooling for building simulations you can replay, verify, and synchronize without guessing.
+
+Instead of treating a game/simulation as a pile of mutable objects, Echo treats state as a typed graph. Each “tick” proposes a set of rewrites, executes them in a deterministic order, and emits cryptographic hashes of the resulting state and provenance so tools/peers can validate and converge.
+
+Whereas Continuum is the canonical reference implementation of the AIΩN Foundations Series, Echo is a high-performance example.
+
+<details>
+<a href="https://github.com/flyingrobots/echo/blob/main/docs/notes/Final.webp"><img src="https://github.com/flyingrobots/echo/blob/main/docs/notes/Final.webp" width="500" /></a>
+</details>
+
+[Take a look at Echo](https://github.com/flyingrobots/echo)
 
 ---
 
