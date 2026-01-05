@@ -100,7 +100,7 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 ---
 
-<a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/694a8545-78eb-4112-afbc-d5f434543b6c" /></a>
+<a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/68b121de-5aa9-49d4-8f19-9ccc61e889bf" /></a>
 
 > _Where the AIΩN Foundations Series becomes executable._
 
