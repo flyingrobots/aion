@@ -21,7 +21,7 @@
 ---
 
 > [!note]  
-> This repository is primarily a reference archive for the AIΩN Foundations papers; readers seeking an executable system should see [JITOS](https://github.com/flyingrobots/jitos).
+> This repository is primarily a reference archive for the AIΩN Foundations papers; readers seeking an executable system should see [Continuum](https://github.com/flyingrobots/Continuum).
 
 > [!note]
 > *Pronounced EYE-on, rhymes with "lion"*
@@ -52,7 +52,7 @@ The **AIΩN Foundations Series** develops the formal machinery and architectural
 | IV | **Rulial Distance & Observer Geometry** | Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
 | V | **Emergent Dynamics from Deterministic Rewrite Systems** | Published | By equipping deterministic rewrite histories with a local action functional, this paper establishes that quantum interference, unitary evolution, and the thermodynamic arrow of time emerge naturally as artifacts of observer-induced coarse-graining rather than as intrinsic physical postulates. |
 | VI | **Ethics & Sovereignty** | Draft | Addresses provenance, accountability, computational agency, and fork/termination responsibility. _COMING SOON_ |
-| VII | **Architecture & Operating System** | Draft | Specifies JITOS, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
+| VII | **Architecture & Operating System** | Draft | Specifies Continuum, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
 
 ---
 
@@ -100,7 +100,7 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 ---
 
-<a href="https://github.com/flyingrobots/jitos"><img alt="JITOS" src="https://github.com/user-attachments/assets/619035a4-c11e-4134-a6ec-56ccfe8c6bba" /></a>
+<a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/694a8545-78eb-4112-afbc-d5f434543b6c" /></a>
 
 > _Where the AIΩN Foundations Series becomes executable._
 
@@ -108,11 +108,11 @@ Our computers are modeled after a system invented in the 1940s to simulate worki
 
 What if we reimagine how computers work? Let's build them from the ground up to solve **today’s challenges**: concurrency, transparency, and deterministic reproducibility. Let’s reimagine debugging by designing auditing that doesn’t just record what, but why and how something happened, as well as what else could have happened?
 
-Introducing: **JITOS** —- a **causal operating system** that computes **deterministic worldlines using WARP graph rewriting** to capture **complete system-wide provenance by construction**. Every run produces holographic artifacts that are fully auditable and verifiable. JITOS turns computers from opaque black-boxes into honest, bit-perfect, replayable, reproducible, transparent, rewindable, forkable **glass-boxes**. 
+Introducing: **Continuum** —- a **causal operating system** that computes **deterministic worldlines using WARP graph rewriting** to capture **complete system-wide provenance by construction**. Every run produces holographic artifacts that are fully auditable and verifiable. Continuum turns computers from opaque black-boxes into honest, bit-perfect, replayable, reproducible, transparent, rewindable, forkable **glass-boxes**. 
 
-JITOS is not a thought experiment. It is real, working software that demonstrates the AIΩN execution model, with a deterministic WARP graph rewriting kernel, a browser-based WASM runtime, and real performance benchmarks. The JITOS project serves as the canonical reference implementation and living design record for the AIΩN system.
+Continuum is not a thought experiment. It is real, working software that demonstrates the AIΩN execution model, with a deterministic WARP graph rewriting kernel, a browser-based WASM runtime, and real performance benchmarks. The Continuum project serves as the canonical reference implementation and living design record for the AIΩN system.
 
-[Learn more about JITOS](https://github.com/flyingrobots/jitos) –– try it in your browser!
+[Learn more about Continuum](https://github.com/flyingrobots/Continuum) –– try it in your browser!
 
 ---
 
@@ -122,6 +122,6 @@ JITOS is not a thought experiment. It is real, working software that demonstrate
 
 **[CΩMPUTER](https://github.com/flyingrobots/aion-computer-book)** © 2025 by James Ross is licensed under Creative Commons Attribution 4.0 (CC BY 4.0).
 
-**[JITOS](https://github.com/flyingrobots/jitos)** © 2025 by James Ross is a software project referenced by the papers, which is not part of this repository. This separate codebase is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) _OR_ [MIND-UCAL](https://github.com/universalcharter/mind-ucal).
+**[Continuum](https://github.com/flyingrobots/Continuum)** © 2025 by James Ross is a software project referenced by the papers, which is not part of this repository. This separate codebase is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) _OR_ [MIND-UCAL](https://github.com/universalcharter/mind-ucal).
 
 _NOTE:_ In short: you may freely use the theory, papers, and documentation without adopting MIND-UCAL; MIND-UCAL applies only to derivative ethical commitments, not technical use.
