@@ -134,10 +134,10 @@ Whereas Continuum is the canonical reference implementation of the AIΩN Foundat
 
 ### License
 
-**AIΩN Foundations Series** © 2025 by James Ross is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+**AIΩN Foundations Series** © 2026 by James Ross is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-**[CΩMPUTER](https://github.com/flyingrobots/aion-computer-book)** © 2025 by James Ross is licensed under Creative Commons Attribution 4.0 (CC BY 4.0).
+**[CΩMPUTER](https://github.com/flyingrobots/aion-computer-book)** © 2026 by James Ross is licensed under Creative Commons Attribution 4.0 (CC BY 4.0).
 
-**[Continuum](https://github.com/flyingrobots/Continuum)** © 2025 by James Ross is a software project referenced by the papers, which is not part of this repository. This separate codebase is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) _OR_ [MIND-UCAL](https://github.com/universalcharter/mind-ucal).
+**[Continuum](https://github.com/flyingrobots/Continuum)** © 2026 by James Ross is a software project referenced by the papers, which is not part of this repository. This separate codebase is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) _OR_ [MIND-UCAL](https://github.com/universalcharter/mind-ucal).
 
 _NOTE:_ In short: you may freely use the theory, papers, and documentation without adopting MIND-UCAL; MIND-UCAL applies only to derivative ethical commitments, not technical use.
