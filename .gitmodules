@@ -19,3 +19,6 @@
 [submodule "aion-paper-06"]
 	path = aion-paper-06-ethics
 	url = https://github.com/flyingrobots/aion-paper-06.git
+[submodule "aion-paper-06-ethics"]
+	path = aion-paper-06-ethics
+	url = https://github.com/flyingrobots/aion-paper-06.git
