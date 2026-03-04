@@ -16,3 +16,6 @@
 [submodule "aion-paper-05-dynamics"]
 	path = aion-paper-05-dynamics
 	url = https://github.com/flyingrobots/aion-paper-05-dynamics.git
+[submodule "aion-paper-06"]
+	path = aion-paper-06-ethics
+	url = https://github.com/flyingrobots/aion-paper-06.git
