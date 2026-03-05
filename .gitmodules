@@ -22,3 +22,6 @@
 [submodule "aion-paper-06-ethics"]
 	path = aion-paper-06-ethics
 	url = https://github.com/flyingrobots/aion-paper-06.git
+[submodule "observer-geometry-1"]
+	path = observer-geometry-1
+	url = https://github.com/flyingrobots/og-1.git
