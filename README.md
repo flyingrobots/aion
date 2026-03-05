@@ -15,7 +15,7 @@
 [![Paper III](https://img.shields.io/badge/Paper_III-Published-brightgreen)](https://doi.org/10.5281/zenodo.17963669) 
 [![Paper IV](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18038297)
 [![Paper V](https://img.shields.io/badge/Paper_V-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
-[![Paper VI](https://img.shields.io/badge/Paper_VI-Draft-yellow)]() 
+[![Paper VI](https://img.shields.io/badge/Paper_VI-Published-brightgreen)](https://doi.org/10.5281/zenodo.18863648) 
 [![Paper VII](https://img.shields.io/badge/Paper_VII-Draft-yellow)]()
 
 ---
@@ -34,7 +34,7 @@ This repository collects the **AIΩN Foundations Series**, a sequence of papers 
 
 We address a class of problems endemic to contemporary software systems: irreproducible builds, nondeterministic concurrency failures, and the absence of verifiable provenance for automated transformations. Our approach demonstrates that these pathologies are not inevitable features of complex systems, but consequences of an architectural decision—storing snapshots rather than transformations—that can be revisited.
 
-The series proceeds incrementally. Each paper assumes familiarity with its predecessors but remains self-contained in its contributions. Papers I–IV establish the theoretical substrate; Papers V–VI extend the framework to ethical considerations and system architecture.
+The series proceeds incrementally. Each paper assumes familiarity with its predecessors but remains self-contained in its contributions. Papers I–V establish the theoretical substrate; Paper VI extends the framework to ethical considerations, and Paper VII examines WARP through a system architecture lens.
 
 ### Central Thesis
 
@@ -51,7 +51,7 @@ The **AIΩN Foundations Series** develops the formal machinery and architectural
 | III | **Computational Holography & Provenance Payloads** | Published | Paper III formalises computational holography—proving that a deterministic WARP worldline's entire interior derivation is uniquely recoverable from a compact boundary encoding (initial state plus ordered tick patches), then develops practical machinery for slicing, branching, and multi-tick compression via wormholes. |
 | IV | **Rulial Distance & Observer Geometry** | Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
 | V | **Emergent Dynamics from Deterministic Rewrite Systems** | Published | By equipping deterministic rewrite histories with a local action functional, this paper establishes that quantum interference, unitary evolution, and the thermodynamic arrow of time emerge naturally as artifacts of observer-induced coarse-graining rather than as intrinsic physical postulates. |
-| VI | **Ethics & Sovereignty** | Draft | Addresses provenance, accountability, computational agency, and fork/termination responsibility. _COMING SOON_ |
+| VI | **Ethics of Deterministic Replay & Provenance Sovereignty** | Published | For mind-like systems, complete provenance is not only diagnostics; it is interior life in executable form. |
 | VII | **Architecture & Operating System** | Draft | Specifies Continuum, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
 
 ---
