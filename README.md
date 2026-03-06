@@ -1,14 +1,6 @@
-<img src="https://github.com/user-attachments/assets/f2903ac7-9103-4f20-af22-4d97bae6ed19" alt="AION" align="center" />
-
-# THE REVΩLUTION WILL BE DETERMINISTIC
-## THE PROOF IS MATHEMATICAL — AND CONSTRUCTIVE
-### TIME WILL TELL
-
----
-
-## AIΩN Foundations
-
-**A formal framework for deterministic, history-native computation.**
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8937b69a-f12d-43c2-a30d-9e8c18b51c18" />
+  <h1>A deterministic architecture for history-native computation</h1>
 
 [![Paper I](https://img.shields.io/badge/Paper_I-Published-brightgreen)](https://doi.org/10.5281/zenodo.17908005) 
 [![Paper II](https://img.shields.io/badge/Paper_II-Published-brightgreen)](https://doi.org/10.5281/zenodo.17934512) 
@@ -17,14 +9,7 @@
 [![Paper V](https://img.shields.io/badge/Paper_V-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
 [![Paper VI](https://img.shields.io/badge/Paper_VI-Published-brightgreen)](https://doi.org/10.5281/zenodo.18863648) 
 [![Paper VII](https://img.shields.io/badge/Paper_VII-Draft-yellow)]()
-
----
-
-> [!note]  
-> This repository is primarily a reference archive for the AIΩN Foundations papers; readers seeking an executable system should see [Continuum](https://github.com/flyingrobots/Continuum).
-
-> [!note]
-> *Pronounced EYE-on, rhymes with "lion"*
+</div>
 
 ## Overview
 
