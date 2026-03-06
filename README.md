@@ -104,7 +104,7 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 Our computers are modeled after a system invented in the 1940s to simulate working alone at a desk job. The file system, folders, recycling bin. CRUD. Debugging. “Works on my machine”. Let’s be honest: **none of this really scales beyond one user**. It’s no wonder we are plagued by concurrency issues when we are stuck using a system _invented before the internet_. 
 
-What if we reimagine how computers work? Let's build them from the ground up to solve **today’s challenges**: concurrency, transparency, and deterministic reproducibility. Let’s reimagine debugging by designing auditing that doesn’t just record what, but why and how something happened, as well as what else could have happened?
+What if we reimagine how computers work? Let's build them from the ground up to solve **today’s challenges**: concurrency, transparency, and deterministic reproducibility. Let’s reimagine debugging by designing auditing that doesn’t just record what, but why and how something happened, as well as what else could have happened? Advances in storage density, cryptographic hashing, and distributed computation make it practical to treat history—not mutable state—as the primary computational substrate.
 
 Introducing: **Continuum** —- a **causal operating system** that computes **deterministic worldlines using WARP graph rewriting** to capture **complete system-wide provenance by construction**. Every run produces holographic artifacts that are fully auditable and verifiable. Continuum turns computers from opaque black-boxes into honest, bit-perfect, replayable, reproducible, transparent, rewindable, forkable **glass-boxes**. 
 
