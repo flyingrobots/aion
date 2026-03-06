@@ -28,8 +28,6 @@
 
 ## Overview
 
-<img width="500" alt="AIΩN Foundations Series" src="https://github.com/user-attachments/assets/3247e04c-3c71-4042-8ac3-8f8bc8f6a91f" align="right" />
-
 This repository collects the **AIΩN Foundations Series**, a sequence of papers that establish a mathematical and architectural foundation for deterministic computation. The series develops, from first principles, a framework in which history is the primary representational artefact and state is derived as a materialised view.
 
 We address a class of problems endemic to contemporary software systems: irreproducible builds, nondeterministic concurrency failures, and the absence of verifiable provenance for automated transformations. Our approach demonstrates that these pathologies are not inevitable features of complex systems, but consequences of an architectural decision—storing snapshots rather than transformations—that can be revisited.
