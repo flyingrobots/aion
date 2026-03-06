@@ -81,11 +81,11 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 <p align="center"><a href="https://github.com/flyingrobots/aion-computer-book/blob/book/computer.pdf">READ CΩMPUTER FOR FREE ONLINE</a></p>
 
----
-
+<div align="center">
 <a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/68b121de-5aa9-49d4-8f19-9ccc61e889bf" /></a>
+  <h2><i>Where the AIΩN Foundations Series becomes executable</i></h2>
+</div>
 
-> _Where the AIΩN Foundations Series becomes executable._
 
 Our computers are modeled after a system invented in the 1940s to simulate working alone at a desk job. The file system, folders, recycling bin. CRUD. Debugging. “Works on my machine”. Let’s be honest: **none of this really scales beyond one user**. It’s no wonder we are plagued by concurrency issues when we are stuck using a system _invented before the internet_. 
 
@@ -97,9 +97,11 @@ Continuum is not a thought experiment. It is real, working software that demonst
 
 [Learn more about Continuum](https://github.com/flyingrobots/Continuum) –– try it in your browser (_coming soon_)!
 
----
 
+<div align="center">
 <a href="https://github.com/flyingrobots/echo"><img alt="Echo" src="https://github.com/user-attachments/assets/1c4f0c70-caad-456a-9f4b-dc74a0d275c6" /></a>
+  <h2><i>“Things are only impossible until they are not” – Jean-Luc Picard</i></h2>
+</div>
 
 Echo is a deterministic graph‑rewrite engine + tooling for building simulations you can replay, verify, and synchronize without guessing.
 
@@ -107,11 +109,16 @@ Instead of treating a game/simulation as a pile of mutable objects, Echo treats 
 
 Whereas Continuum is the canonical reference implementation of the AIΩN Foundations Series, Echo is a high-performance example.
 
-<details>
-<a href="https://github.com/flyingrobots/echo/blob/main/docs/notes/Final.webp"><img src="https://github.com/flyingrobots/echo/blob/main/docs/notes/Final.webp" width="500" /></a>
-</details>
-
 [Take a look at Echo](https://github.com/flyingrobots/echo)
+
+<div align="center">
+<a href="https://github.com/git-stunts/git-warp"><img src="https://github.com/user-attachments/assets/eaa57ad6-2c1b-413a-a683-2135e423da9a" /></a>
+  <h2>CRDT-friendly WARP graph engine on Git commits, with deterministic replayable history</h2>
+</div>
+
+`git-warp` is a **distributed graph database** built on Git’s content-addressed storage. Each participant writes to an independent worldline: a causal chain of patches, while replicas deterministically materialize these worldlines into a shared graph state. Uses CRDT semantics and canonical event ordering. Because history is never rewritten, `git-warp` preserves intent and provenance instead of collapsing them into opaque merges. The result is collaborative computation where distributed replicas remain faithful observers of the same causal history. And best of all, it's just Git! No database. No servers. Works anywhere you can push/pull.
+
+[Try `git-warp` today!](https://github.com/flyingrobots/git-warp)
 
 ---
 
