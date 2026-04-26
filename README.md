@@ -117,4 +117,33 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 ### License
 
-**AIΩN Foundations Series** © 2026 by James Ross is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+This repository uses a split licensing model. Different categories of content are licensed under different terms.
+
+#### 1. Code
+
+All executable and functional materials, including but not limited to:
+
+* Source code
+* Build scripts
+* Tooling and utilities
+* Configuration files used for execution
+* Binaries and compiled artifacts
+
+are licensed under:
+
+Apache License, Version 2.0
+See [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+#### 2. Literature
+
+All non-executable, human-readable intellectual content, including but not limited to:
+
+* Documentation (docs/)
+* Mathematical and theoretical materials (warp-math/)
+* Papers, essays, notes, and explanatory text
+* Diagrams, figures, and conceptual descriptions
+
+are licensed under:
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+See [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
