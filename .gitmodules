@@ -22,9 +22,18 @@
 [submodule "aion-paper-06-ethics"]
 	path = aion-paper-06-ethics
 	url = https://github.com/flyingrobots/aion-paper-06.git
-[submodule "observer-geometry-1"]
-	path = observer-geometry-1
-	url = https://github.com/flyingrobots/og-1.git
 [submodule "aion-paper-07"]
 	path = aion-paper-07
 	url = https://github.com/flyingrobots/aion-paper-07.git
+[submodule "observer-geometry-1"]
+	path = observer-geometry-1
+	url = https://github.com/flyingrobots/og-1.git
+[submodule "observer-geometry-2"]
+	path = observer-geometry-2
+	url = https://github.com/flyingrobots/og-2.git
+[submodule "observer-geometry-3"]
+	path = observer-geometry-3
+	url = https://github.com/flyingrobots/og-3.git
+[submodule "git-holaudit"]
+	path = git-holaudit
+	url = https://github.com/flyingrobots/git-holaudit.git
