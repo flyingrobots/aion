@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/8937b69a-f12d-43c2-a30d-9e8c18b51c18" />
-  <h1>A deterministic architecture for history-native computation</h1>
+  <h1>A deterministic architecture for history-native computation — from recursive provenance to a protocol for distributed causal computing</h1>
 
 [![Paper I](https://img.shields.io/badge/Paper_I-Published-brightgreen)](https://doi.org/10.5281/zenodo.17908005) 
 [![Paper II](https://img.shields.io/badge/Paper_II-Published-brightgreen)](https://doi.org/10.5281/zenodo.17934512) 
@@ -8,34 +8,37 @@
 [![Paper IV](https://img.shields.io/badge/Paper_IV-Published-brightgreen)](https://doi.org/10.5281/zenodo.18038297)
 [![Paper V](https://img.shields.io/badge/Paper_V-Published-brightgreen)](https://doi.org/10.5281/zenodo.18146884)
 [![Paper VI](https://img.shields.io/badge/Paper_VI-Published-brightgreen)](https://doi.org/10.5281/zenodo.18863648) 
-[![Paper VII](https://img.shields.io/badge/Paper_VII-Draft-yellow)]()
+[![Paper VII](https://img.shields.io/badge/Paper_VII-Published-brightgreen)](https://doi.org/10.5281/zenodo.19751149) 
+[![Paper VIII](https://img.shields.io/badge/Paper_VIII-Draft-yellow)]()
+
 </div>
 
 ## Overview
 
-This repository collects the **AIΩN Foundations Series**, a sequence of papers that establish a mathematical and architectural foundation for deterministic computation. The series develops, from first principles, a framework in which history is the primary representational artefact and state is derived as a materialised view.
+This repository collects the **AIΩN Foundations Series**, a sequence of eight papers that establish a mathematical, architectural, and ethical foundation for distributed causal computing. The series develops, from first principles, a framework in which witnessed causal history is the primary representational artefact. State, graphs, and runtimes are derived as observer-relative readings of it.
 
-We address a class of problems endemic to contemporary software systems: irreproducible builds, nondeterministic concurrency failures, and the absence of verifiable provenance for automated transformations. Our approach demonstrates that these pathologies are not inevitable features of complex systems, but consequences of an architectural decision—storing snapshots rather than transformations—that can be revisited.
+We address a class of problems endemic to contemporary software systems: irreproducible builds, nondeterministic concurrency failures, and the absence of verifiable provenance for automated transformations. Our approach demonstrates that these pathologies are not inevitable features of complex systems, but consequences of an architectural decision. Storing transformations rather than snapshots solves these problems.
 
-The series proceeds incrementally. Each paper assumes familiarity with its predecessors but remains self-contained in its contributions. Papers I–V establish the theoretical substrate; Paper VI extends the framework to ethical considerations, and Paper VII examines WARP through a system architecture lens.
+The series proceeds incrementally. Papers I–III build the formal substrate: WARP graphs — recursive provenance structures, deterministic rewriting, and holographic recovery. Papers IV–V introduce observer geometry and emergent dynamics. Paper VI makes the ethical turn: for mind-like systems, complete provenance is interior life in executable form. Paper VII unifies the preceding machinery into a single scale-invariant optic and names the medium it induces. Paper VIII concludes the series by arguing that what the foundations describe is not a system to be built, but a protocol to be joined.
 
 ### Central Thesis
 
-We contend that the fundamental unit of computational storage should be the *transformation*, not the *state*. When transformations are first-class and immutable, deterministic replay, time-travel debugging, and structural provenance emerge as natural consequences rather than heroic engineering efforts.
+**We contend that the fundamental unit of computational storage should be the transformation, not the state.** When transformations are first-class and immutable, deterministic replay, time-travel debugging, and structural provenance emerge as natural consequences rather than heroic engineering efforts.
 
-The **AIΩN Foundations Series** develops the formal machinery and architectural consequences required to make this inversion rigorous and practical.
+The series arrives at a stronger conclusion. When this inversion is carried through — from local execution to concurrent merging to distributed transport — the same control shape recurs at every scale. There is no graph, there is no runtime, and there is no system. There is only witnessed causal history, and everything we call a graph, a runtime, or a system is an observer-relative reading of it.
 
 ## Papers
 
 | # | Title | Status | Contribution |
 |---|-------|--------|--------------|
-| I | **A Worldline Algebra for Recursive Provenance** | Published | Paper I introduces WARP graphs—finite directed multigraphs whose vertices and edges recursively carry attached WARP graphs—providing a minimal, well-founded "graphs all the way down" structure that unifies hierarchy, syntax, control flow, and provenance into a single algebraic object upon which the rest of the series builds. |
-| II | **Canonical State Evolution and Deterministic Worldlines** | Published | Paper II equips WARP graphs with a deterministic concurrent operational semantics—based on double-pushout rewriting in an adhesive category of typed open graphs—proving that any scheduler-admissible batch of rewrites commits to the same successor state regardless of internal serialisation order, thereby grounding replay and provenance in a single tick-confluent execution model. |
-| III | **Computational Holography & Provenance Payloads** | Published | Paper III formalises computational holography—proving that a deterministic WARP worldline's entire interior derivation is uniquely recoverable from a compact boundary encoding (initial state plus ordered tick patches), then develops practical machinery for slicing, branching, and multi-tick compression via wormholes. |
-| IV | **Rulial Distance & Observer Geometry** | Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
-| V | **Emergent Dynamics from Deterministic Rewrite Systems** | Published | By equipping deterministic rewrite histories with a local action functional, this paper establishes that quantum interference, unitary evolution, and the thermodynamic arrow of time emerge naturally as artifacts of observer-induced coarse-graining rather than as intrinsic physical postulates. |
-| VI | **Ethics of Deterministic Replay & Provenance Sovereignty** | Published | For mind-like systems, complete provenance is not only diagnostics; it is interior life in executable form. |
-| VII | **Architecture & Operating System** | Draft | Specifies Continuum, a causal operating system defining the execution model, observer interface, and kernel semantics implied by the theory. _COMING SOON_ |
+| I | **A Worldline Algebra for Recursive Provenance** | ✅ Published | Paper I introduces WARP graphs—finite directed multigraphs whose vertices and edges recursively carry attached WARP graphs—providing a minimal, well-founded "graphs all the way down" structure that unifies hierarchy, syntax, control flow, and provenance into a single algebraic object upon which the rest of the series builds. |
+| II | **Canonical State Evolution and Deterministic Worldlines** | ✅ Published | Paper II equips WARP graphs with a deterministic concurrent operational semantics—based on double-pushout rewriting in an adhesive category of typed open graphs—proving that any scheduler-admissible batch of rewrites commits to the same successor state regardless of internal serialisation order, thereby grounding replay and provenance in a single tick-confluent execution model. |
+| III | **Computational Holography & Provenance Payloads** | ✅ Published | Paper III formalises computational holography—proving that a deterministic WARP worldline's entire interior derivation is uniquely recoverable from a compact boundary encoding (initial state plus ordered tick patches), then develops practical machinery for slicing, branching, and multi-tick compression via wormholes. |
+| IV | **Rulial Distance & Observer Geometry** | ✅ Published | Paper IV formalises observer geometry—modelling observers as resource-bounded functors from rewriting histories to trace spaces, introducing a rulial distance that measures the MDL-regularised cost of translating between descriptions, and grounding the Chronos–Kairos–Aion time triad—thereby providing a computable notion of frame separation that clarifies abstraction, auditability, and explainability trade-offs. |
+| V | **Emergent Dynamics from Deterministic Rewrite Systems** | ✅ Published | By equipping deterministic rewrite histories with a local action functional, this paper establishes that quantum interference, unitary evolution, and the thermodynamic arrow of time emerge naturally as artifacts of observer-induced coarse-graining rather than as intrinsic physical postulates. |
+| VI | **Ethics of Deterministic Replay & Provenance Sovereignty** | ✅ Published | For mind-like systems, complete provenance is not only diagnostics; it is interior life in executable form. |
+| VII | **WARP: Optics, Holograms, and Worldlines over Shared Causal History** | ✅ Published | Defines the scale-invariant WARP optic—unifying local execution, concurrent braids, and distributed transport—and names the protocol-shaped causal medium it induces: the Continuum. |
+| VIII | **Continuum: A Protocol for Distributed Causal Computation** | 🚧 Draft | There is no graph, there is no runtime, and there is no system—only witnessed causal history. Concludes the AIΩN Foundations Series by defining Continuum as a protocol in which coordination, governance, and trust emerge from witnessed admission alone. |
 
 ---
 
@@ -44,21 +47,50 @@ The **AIΩN Foundations Series** develops the formal machinery and architectural
 ```bibtex
 @misc{ross2025aion,
   author       = {Ross, James},
-  title        = {The {AIΩN} Foundations Series},
-  year         = {2025},
+  title        = {The {AI\Omega N} Foundations Series},
+  year         = {2025--2026},
   publisher    = {Zenodo},
-  note         = {Papers I--VI}
+  note         = {Papers I--VIII}
 }
 ```
 
 ---
 
-# Related Works
+# Continuum
+
+<div align="center">
+<a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/68b121de-5aa9-49d4-8f19-9ccc61e889bf" /></a>
+  <h2><i>Continuum: A Protocol for Distributed Causal Computation</i></h2>
+</div>
+
+The AIΩN Foundations Series papers define Continuum as a protocol — the causal medium that emerges when every participant speaks witnessed admission. These projects make it concrete. Each is a Continuum application: a participant in the same protocol of witnessed causal admission, built for a different domain.
+
+## Runtimes
+
+### [Echo](https://github.com/flyingrobots/echo) 
+
+Echo is a high-performance Continuum runtime for real-time deterministic simulation. State is a WARP graph; each tick proposes rewrites, executes them in deterministic order, and emits cryptographic hashes so tools and peers can validate and converge.
+
+### [git-warp](https://github.com/git-stunts/git-warp)
+
+git-warp is a Continuum runtime for distributed collaboration, built on Git's content-addressed storage. Each participant writes to an independent worldline while replicas deterministically materialize a shared graph state. No database, no servers — works anywhere you can push and pull.
+
+## Compiler
+
+### [Wesley](https://github.com/flyingrobots/wesley) 
+
+Wesley is a Continuum schema compiler. It takes authored GraphQL SDL that describe WARP optics and graph contracts — the same surfaces defined in Paper VII §6.2 — and compiles them into runtime-checkable code for Echo, git-warp, and other Continuum participants. Wesley treats the authored schema as the sovereign system of record: generated artifacts (Rust, TypeScript, SQL) are derived surfaces, never peer authorities. Commands like plan, rehearse, and witness produce machine-readable evidence that a proposed change is lawful, safe, and conformant before it ships.
+
+## Tools
+
+### [warp-ttd](https://github.com/flyingrobots/warp-ttd)
+
+WARP TTD is a Continuum time-travel debugger — a wide-aperture observer that inspects the causal history that produced a state: what was admitted, what was rejected, the resulting effect emissions. Because Continuum worldlines are patch-deterministic, there is no need to capture sessions or enable special modes; the protocol's computational holograms make the full derivation history recoverable from boundary data alone. A host-neutral GraphQL protocol allows the same debugger to serve any Continuum participant through capability-gated adapters.
+
+---
 
 ## [CΩMPUTER](https://github.com/flyingrobots/aion-book-computer)
-
 ### The Geometry of All Possible Machines
-
 #### By James Ross
 
 <a href="https://github.com/flyingrobots/aion-computer-book/blob/book/computer.pdf">
@@ -81,53 +113,37 @@ The book is not an introduction, and does not attempt to be. It assumes comfort 
 
 <p align="center"><a href="https://github.com/flyingrobots/aion-computer-book/blob/book/computer.pdf">READ CΩMPUTER FOR FREE ONLINE</a></p>
 
-<div align="center">
-<a href="https://github.com/flyingrobots/continuum"><img alt="Continuum" src="https://github.com/user-attachments/assets/68b121de-5aa9-49d4-8f19-9ccc61e889bf" /></a>
-  <h2><i>Where the AIΩN Foundations Series becomes executable</i></h2>
-</div>
-
-
-Our computers are modeled after a system invented in the 1940s to simulate working alone at a desk job. The file system, folders, recycling bin. CRUD. Debugging. “Works on my machine”. Let’s be honest: **none of this really scales beyond one user**. It’s no wonder we are plagued by concurrency issues when we are stuck using a system _invented before the internet_. 
-
-What if we reimagine how computers work? Let's build them from the ground up to solve **today’s challenges**: concurrency, transparency, and deterministic reproducibility. Let’s reimagine debugging by designing auditing that doesn’t just record what, but why and how something happened, as well as what else could have happened? Advances in storage density, cryptographic hashing, and distributed computation make it practical to treat history—not mutable state—as the primary computational substrate.
-
-Introducing: **Continuum** —- a **causal operating system** that computes **deterministic worldlines using WARP graph rewriting** to capture **complete system-wide provenance by construction**. Every run produces holographic artifacts that are fully auditable and verifiable. Continuum turns computers from opaque black-boxes into honest, bit-perfect, replayable, reproducible, transparent, rewindable, forkable **glass-boxes**. 
-
-Continuum is not a thought experiment. It is real, working software that demonstrates the AIΩN execution model, with a deterministic WARP graph rewriting kernel, a browser-based WASM runtime, and real performance benchmarks. The Continuum project serves as the canonical reference implementation and living design record for the AIΩN system.
-
-[Learn more about Continuum](https://github.com/flyingrobots/Continuum) –– try it in your browser (_coming soon_)!
-
-
-<div align="center">
-<a href="https://github.com/flyingrobots/echo"><img alt="Echo" src="https://github.com/user-attachments/assets/1c4f0c70-caad-456a-9f4b-dc74a0d275c6" /></a>
-  <h2><i>“Things are only impossible until they are not” – Jean-Luc Picard</i></h2>
-</div>
-
-Echo is a deterministic graph‑rewrite engine + tooling for building simulations you can replay, verify, and synchronize without guessing.
-
-Instead of treating a game/simulation as a pile of mutable objects, Echo treats state as a typed graph. Each “tick” proposes a set of rewrites, executes them in a deterministic order, and emits cryptographic hashes of the resulting state and provenance so tools/peers can validate and converge.
-
-Whereas Continuum is the canonical reference implementation of the AIΩN Foundations Series, Echo is a high-performance example.
-
-[Take a look at Echo](https://github.com/flyingrobots/echo)
-
-<div align="center">
-<a href="https://github.com/git-stunts/git-warp"><img src="https://github.com/user-attachments/assets/eaa57ad6-2c1b-413a-a683-2135e423da9a" /></a>
-  <h2>CRDT-friendly WARP graph engine on Git commits, with deterministic replayable history</h2>
-</div>
-
-`git-warp` is a **distributed graph database** built on Git’s content-addressed storage. Each participant writes to an independent worldline: a causal chain of patches, while replicas deterministically materialize these worldlines into a shared graph state. Uses CRDT semantics and canonical event ordering. Because history is never rewritten, `git-warp` preserves intent and provenance instead of collapsing them into opaque merges. The result is collaborative computation where distributed replicas remain faithful observers of the same causal history. And best of all, it's just Git! No database. No servers. Works anywhere you can push/pull.
-
-[Try `git-warp` today!](https://github.com/flyingrobots/git-warp)
-
 ---
 
 ### License
 
-**AIΩN Foundations Series** © 2026 by James Ross is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+This repository uses a split licensing model. Different categories of content are licensed under different terms.
 
-**[CΩMPUTER](https://github.com/flyingrobots/aion-computer-book)** © 2026 by James Ross is licensed under Creative Commons Attribution 4.0 (CC BY 4.0).
+#### 1. Code
 
-**[Continuum](https://github.com/flyingrobots/Continuum)** © 2026 by James Ross is a software project referenced by the papers, which is not part of this repository. This separate codebase is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) _OR_ [MIND-UCAL](https://github.com/universalcharter/mind-ucal).
+All executable and functional materials, including but not limited to:
 
-_NOTE:_ In short: you may freely use the theory, papers, and documentation without adopting MIND-UCAL; MIND-UCAL applies only to derivative ethical commitments, not technical use.
+* Source code
+* Build scripts
+* Tooling and utilities
+* Configuration files used for execution
+* Binaries and compiled artifacts
+
+are licensed under:
+
+Apache License, Version 2.0
+See [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+#### 2. Literature
+
+All non-executable, human-readable intellectual content, including but not limited to:
+
+* Documentation (docs/)
+* Mathematical and theoretical materials (warp-math/)
+* Papers, essays, notes, and explanatory text
+* Diagrams, figures, and conceptual descriptions
+
+are licensed under:
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+See [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
